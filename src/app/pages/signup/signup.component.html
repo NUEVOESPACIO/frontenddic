@@ -1,0 +1,106 @@
+
+<div class="bootstrap-wrapper">
+    <hr>
+    <div class="container text-center">
+        <div>
+            <div class="row">               
+                <tr *ngFor="let usuario of usuariosList; let i=index;">
+                    <h1 class="iduser">{{usuario.id}}</h1>
+                    <h1 class="iduser">{{i}}</h1>
+                    <button mat-raised-button color="primary" (click)="eliminarusuario(usuario.id);">Eliminar</button>
+                    <button mat-raised-button color="primary" (click)="editarusuario(usuario.id,i);">Editar</button>
+                    <mat-form-field appearance="fill">
+                     
+                        <mat-label>{{usuario.username}}</mat-label>
+                        <input [(ngModel)] = "username[usuario.id]" matInput placeholder="{{usuario.username}}">                                            
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{usuario.password}}</mat-label>
+                        <input [(ngModel)] = "password[usuario.id]" matInput placeholder="{{usuario.password}}">
+                        {{password[usuario.id]}}
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{usuario.nombre}}</mat-label>
+                        <input [(ngModel)] = "nombre[usuario.id]" matInput placeholder="{{usuario.nombre}}">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{usuario.apellido}}</mat-label>
+                        <input [(ngModel)] = "apellido[usuario.id]" matInput placeholder="{{usuario.apellido}}">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{usuario.email}}</mat-label>
+                        <input [(ngModel)] = "email[usuario.id]" matInput placeholder="{{usuario.email}}">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{usuario.telefono}}</mat-label>
+                        <input [(ngModel)] = "telefono[usuario.id]" matInput placeholder="{{usuario.telefono}}">
+                    </mat-form-field>
+
+                    
+                    <hr>
+
+                </tr>
+             </div>
+        </div>
+    </div>   
+</div>
+
+<hr>
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img src="../../../assets/2583145.png" width="60" height="60">
+                </div>
+                <h1 class="text-center">Registrate aqui</h1>           
+                <form (ngSubmit)="formSubmit()">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Nombre de usuario</mat-label>
+                        <input required [(ngModel)] = "user.username" name="username" matInput placeholder="Digite su nombre de usuario">
+                        <mat-hint>El nombre de usuario debe ser unico</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input required [(ngModel)] = "user.password" name="password" type="password" matInput placeholder="Ingrese su contraseña">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input required [(ngModel)] = "user.nombre"  name="nombre" matInput placeholder="Ingrese su Nombre">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Apellido</mat-label>
+                        <input required [(ngModel)] = "user.apellido" name="apellido" matInput placeholder="Ingrese su Apellido">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input required [(ngModel)] = "user.email" name="email" type="email" matInput placeholder="Ingrese su Email">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Telefono</mat-label>
+                        <input required [(ngModel)] = "user.telefono" name="telefono" matInput placeholder="Ingrese su telefono">
+                    </mat-form-field>
+
+                    <div class="container text-center">
+                        <button mat-raised-button color="primary">Registrar</button>
+                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="accent">Limpiar</button>
+                    </div>
+                </form>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
