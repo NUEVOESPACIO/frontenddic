@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ExperiencialService } from 'src/app/services/experiencial.service';
-import { TipoEmpleoService } from 'src/app/services/tipoempleo.service';
+import { ProyectosService } from 'src/app/services/proyectos.service';
 
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-experiencial',
-  templateUrl: './experiencial.component.html',
-  styleUrls: ['./experiencial.component.css']
+  selector: 'app-proyectos',
+  templateUrl: './proyectos.component.html',
+  styleUrls: ['./proyectos.component.css']
 })
-export class ExperiencialComponent implements OnInit {
-  
+
+
+export class ProyectosComponent implements OnInit {
+
+
 
   
 
@@ -30,58 +32,80 @@ public namePattern = /^.{3}\s[a-zA-Z]{3}\s\d{2}\s\d{4}.{1,}/;
 // Creo el formulario para generar el alta con sus FormControls
 
 formularioAlta = new FormGroup({
-nombreEmpresa: new FormControl('', [Validators.required]),
+nombreProyecto: new FormControl('', [Validators.required]),
+entorno: new FormControl('', [Validators.required]),
+marco: new FormControl('', [Validators.required]),
 fechaini: new FormControl('',[Validators.required]), 
-esTrabajoActual: new FormControl({value: '', disabled: true},[Validators.required]), 
+esProyectoActual: new FormControl({value: '', disabled: true},[Validators.required]), 
 fechafin: new FormControl({value: '', disabled: true}), 
-descripcion: new FormControl('', [Validators.required, Validators.maxLength(200)]),
-tipoempleo: new FormControl('', [Validators.required])
+link: new FormControl('', [Validators.required]),
+imagen: new FormControl('', [Validators.required]),
+funcion: new FormControl('', [Validators.required]),
+resultado: new FormControl('', [Validators.required]),
+aprendisajeObtenido: new FormControl('', [Validators.required, Validators.maxLength(200)]),
+
+
 });
 
 // Variable educacion sobre la que alojare propiedades para enviar a la API
-public experiencial ={     
-nombreEmpresa:'',
+public proyecto ={     
+nombreProyecto:'',
+entorno:'',
+marco:'',
 fechaini:'',
-esTrabajoActual:false,
+esProyectoActual:false,
 fechafin:'',
-descripcion:'',
-personaid:0,
-tipoempleo:''
+link:'',
+imagen:'',
+persona:1,
+funcion:'',
+resultado:'',
+aprendisajeObtenido:''
 };
 
 // Variables educacionedit para inflarla con informacion del registro que quiere editar
-public experiencialedit ={     
+public proyectoedit ={     
   id:0,
-  nombreEmpresa:'',
+  nombreProyecto:'',
+  entorno:'',
+  marco:'',
   fechaini:'',
-  esTrabajoActual:false,
+  esProyectoActual:false,
   fechafin:'',
-  descripcion:'',
-  personaid:'',
-  tipoempleo:''
+  link:'',
+  imagen:'',
+  persona:1,
+  funcion:'',
+  resultado:'',
+  aprendisajeObtenido:''
   };
 
 // arrays de cada campo del registro para mostrar los datos de todos los registros que trae la API
 public idz:any=[];
 public id:any=[];
-public nombreEmpresa:any=[];
-public esTrabajAactual:any=[];
+public nombreProyecto:any=[];
+public entorno:any=[];
+public marco:any=[];
 public fechaini:any=[];
+public esProyectoActual:any=[];
 public fechafin:any=[];
-public descripcion:any=[];
-public personaid:any=[];
-public tipoempleo:any=[];
+public link:any=[];
+public imagen:any=[];
+public persona:any=[];
+public funcion:any=[];
+public resultado:any=[];
+public aprendisajeObtenido:any=[];
 
 // Esta Lista se llenara con los datos de la API en el ENDPOINT listar
-public experiencialList: any= [];   
-public tipoemple:any=[];
+public proyectosList: any= [];   
+
 
 // Varible publica con la que hago binding de cantidad de caracteres en el textarea
 public sttt: string='';
 public caracteresenedit: any=[];
 
 // En el constructor inyecto el servicio que me permite vincularme con la API y la alterta MatanckBar, el ROuter y el FormBuilder
-constructor(private experiencialService: ExperiencialService, private snack:MatSnackBar, private fb: FormBuilder, private router: Router, private tipoempleoservice: TipoEmpleoService)  { 
+constructor(private proyectosService: ProyectosService, private snack:MatSnackBar, private fb: FormBuilder, private router: Router)  { 
 }
 
 // metodo get para lessons que es el form array
@@ -94,7 +118,6 @@ ngOnInit(): void {
 
 this.router.routeReuseStrategy.shouldReuseRoute = () => { return false; };    
 this.cargardata();   
-this.cargatiposempleos();
 
 } 
 
@@ -106,18 +129,19 @@ if ((this.formularioAlta.valid))
 {console.log("Todos los datos son válidos");
 
 // lleno variable educacion con lo datos de los formcontrols
-this.experiencial.nombreEmpresa=this.formularioAlta.get('nombreEmpresa')?.value;
-this.experiencial.descripcion=this.formularioAlta.get('descripcion')?.value;
+this.proyecto.nombreProyecto=this.formularioAlta.get('nombreProyecto')?.value;
+this.proyecto.entorno=this.formularioAlta.get('entorno')?.value;
+this.proyecto.marco=this.formularioAlta.get('marco')?.value;
 
 var ppp= this.formularioAlta.get('fechaini')?.value;
 var dia = ppp.getDate();
 var mes =ppp.getMonth()+1;
 var ani = ppp.getFullYear();
 var ppp2=mes+"/"+dia+"/"+ani;
-this.experiencial.fechaini=ppp2; 
+this.proyecto.fechaini=ppp2; 
 
-this.experiencial.esTrabajoActual=this.formularioAlta.get('esTrabajoActual')?.value;
-console.log("sisisi "+this.experiencial.esTrabajoActual);
+this.proyecto.esProyectoActual=this.formularioAlta.get('esProyectoActual')?.value;
+console.log("sisisi "+this.proyecto.esProyectoActual);
 
 var ppp= this.formularioAlta.get('fechafin')?.value;
 ppp2="";
@@ -126,25 +150,29 @@ var dia = ppp.getDate();
 var mes = ppp.getMonth()+1;
 var ani = ppp.getFullYear();
 var ppp2=mes+"/"+dia+"/"+ani;}
-this.experiencial.fechafin=ppp2;  
+this.proyecto.fechafin=ppp2;  
 
-this.experiencial.personaid=1;
-this.experiencial.tipoempleo=this.formularioAlta.get('tipoempleo')?.value;  
+this.proyecto.persona=1;
+this.proyecto.link=this.formularioAlta.get('link')?.value;  
+this.proyecto.imagen=this.formularioAlta.get('imagen')?.value;  
+this.proyecto.funcion=this.formularioAlta.get('funcion')?.value;  
+this.proyecto.resultado=this.formularioAlta.get('resultado')?.value;  
+this.proyecto.aprendisajeObtenido=this.formularioAlta.get('aprendisajeObtenido')?.value;  
 
 // llamo al metodo del servicio para subir los datos a la base de datos
-this.experiencialService.anadirExperiencial(this.experiencial).subscribe(
+this.proyectosService.anadirProyecto(this.proyecto).subscribe(
  (data) => {
    console.log(data);
    Swal.fire('Experiencia guardada','Experiencia registrada con exito en el sistema','success');
    this.router.onSameUrlNavigation="reload";
-   this.router.navigate(["/experiencial"]);        
+   this.router.navigate(["/proyectos"]);        
  },(error)=> {
    console.log(error);
    this.snack.open("Ha ocurrido un error en el sistema", 'Aceptar', {
      duration: 3000 
    });   
  })} else {
-   console.log(this.experiencial.fechaini);
+   console.log(this.proyecto.fechaini);
    this.snack.open("Hay campos inválidos en el formulario. Favor, verificar", 'Aceptar', {
      duration: 3000 
    });   
@@ -153,65 +181,58 @@ this.experiencialService.anadirExperiencial(this.experiencial).subscribe(
 
 // llamo al metodo para traer datos del servidor API para exhibir de todos los registros.
 
-public cargatiposempleos() {
-  this.tipoempleoservice.listarTipoEmpleo().subscribe((data)=>{
-    this.tipoemple=data;
-    console.log(this.tipoemple);
-
-    
-  },(error)=>
-  {console.log("error")});  
 
 
-}
 
 public cargardata() {    
-this.experiencialService.listarExperiencial().subscribe((data)=>{console.log(data);
-this.experiencialList=data;
+this.proyectosService.listarProyectos().subscribe((data)=>{console.log(data);
+this.proyectosList=data;
 
 // Recorro el Array, y voy agregando lessonForms a Lesssons;
-for(let idd = 0 ; idd < this.experiencialList.length ; idd++){
+for(let idd = 0 ; idd < this.proyectosList.length ; idd++){
  
  const lessonForm = this.fb.group({
-     nombreEmpresag: [this.experiencialList[idd].nombreEmpresa, [Validators.required]],     
-     fechainig: [this.experiencialList[idd].fechaini, Validators.required],      
-     esTrabajoActualg: ['', Validators.required],
-     fechafing: [this.experiencialList[idd].fechafin],     
-     descripciong: [this.experiencialList[idd].descripcion, [Validators.required, Validators.maxLength(200)]],
-     tipoempleog: new FormControl(this.experiencialList[idd].tipoempleo, [Validators.required])
+
+     nombreProyectog: [this.proyectosList[idd].nombreProyecto, [Validators.required]],
+     entornog: [this.proyectosList[idd].entorno, [Validators.required]],
+     marcog: [this.proyectosList[idd].marco, [Validators.required]],                    
+     fechainig: [this.proyectosList[idd].fechaini, Validators.required],      
+     esProyectoActualg: ['', Validators.required],
+     fechafing: [this.proyectosList[idd].fechafin], 
+     linkg: [this.proyectosList[idd].link, [Validators.required]],
+     imageng: [this.proyectosList[idd].imagen, [Validators.required]],
+     funciong: [this.proyectosList[idd].funcion, [Validators.required]],  
+     resultadog: [this.proyectosList[idd].resultado, [Validators.required]],     
+     aprendisajeObtenidog: [this.proyectosList[idd].descripcion, [Validators.required, Validators.maxLength(200)]],     
 
  });
 
  this.lessons.push(lessonForm); 
- this.lessons.at(idd).get('fechainig')?.setValue(this.experiencialList[idd].fechaini);
+ this.lessons.at(idd).get('fechainig')?.setValue(this.proyectosList[idd].fechaini);
  this.lessons.at(idd).get('fechainig')?.clearValidators;
  this.lessons.at(idd).get('fechainig')?.updateValueAndValidity;  
  
  console.log("thiiiiisssss");
- var ops=this.experiencialList[idd].tipoempleo;
 
  
  // Apaga o prende al hacer ciclo dpende de finalizado
  var seb:string;
- console.log(this.experiencialList[idd].esTrabajoActual);
- if (this.experiencialList[idd].esTrabajoActual===true) {seb='true';                  
- this.lessons.at(idd).get('esTrabajoActualg')?.setValue(seb);     
+ console.log(this.proyectosList[idd].esTrabajoActual);
+ if (this.proyectosList[idd].esProyectoActual===true) {seb='true';                  
+ this.lessons.at(idd).get('esProyectoActualg')?.setValue(seb);     
  this.lessons.at(idd).get('fechafing')?.disable();
  this.lessons.at(idd).get('fechafing')?.clearValidators;
- this.lessons.at(idd).get('esTrabajoActualg')?.updateValueAndValidity;
+ this.lessons.at(idd).get('esProyectoActualg')?.updateValueAndValidity;
  
 
  } else {seb='false';     
- this.lessons.at(idd).get('esTrabajoActualg')?.setValue(seb);       
+ this.lessons.at(idd).get('esProyectoActualg')?.setValue(seb);       
  this.lessons.at(idd).get('fechafing')?.enable(); 
  this.lessons.at(idd).get('fechafing')?.addValidators([Validators.required]);  
- this.lessons.at(idd).get('esTrabajoActualg')?.updateValueAndValidity; 
+ this.lessons.at(idd).get('esProyectoActualg')?.updateValueAndValidity; 
  }      
 
  
- this.lessons.at(idd).get('tipoempleog')?.setValue(ops);
- //this.lessons.at(idd).get('tipoempleog')?.updateValueAndValidity;
-
  
 }
  },(error)=>
@@ -222,24 +243,24 @@ for(let idd = 0 ; idd < this.experiencialList.length ; idd++){
 
 public placehold(a:number,b:number): string {
 if (a===1) 
-{return this.experiencialList[b].fechaini;} else 
+{return this.proyectosList[b].fechaini;} else 
 {
- if (this.lessons.at(b).get('fechafing')?.value.toString()==='') {return ''} else {return this.experiencialList[b].fechafin;}      
+ if (this.lessons.at(b).get('fechafing')?.value.toString()==='') {return ''} else {return this.proyectosList[b].fechafin;}      
 }
 }
 
 // llamo al metodo del servicio que me permite eliminar un registro
-public eliminarexperiencial(idx: number) {
-var idu=this.experiencialList[idx].id;
+public eliminarproyecto(idx: number) {
+var idu=this.proyectosList[idx].id;
 console.log(idu);    
-this.experiencialService.eliminarExperiencial(idu).subscribe((data)=>{console.log(data)      
- Swal.fire('Usuario eliminado','Usuario eliminado ok','success');
+this.proyectosService.eliminarProyecto(idu).subscribe((data)=>{console.log(data)      
+ Swal.fire('Proyecto Eliminado','Proyecto eliminado ok','success');
  console.log("deberia estar todo eliminadion coorecdta");       
  this.router.onSameUrlNavigation="reload";
- this.router.navigate(["/experiencial"]);            
+ this.router.navigate(["/proyectos"]);            
 
-},(error)=>{console.log("No se pudo eliminar usuario");
-Swal.fire('No se pudo eliminar Usuario','No se pudo eliminar usuario','success');
+},(error)=>{console.log("No se pudo eliminar el proyecto");
+Swal.fire('No se pudo eliminar el proyecto','No se pudo eliminar usuario','success');
 });    
 }
 
@@ -247,17 +268,17 @@ Swal.fire('No se pudo eliminar Usuario','No se pudo eliminar usuario','success')
 
 public cambiafechaini() {
 console.log("cambiar fecha ini");    
-this.formularioAlta.get('esTrabajoActual')?.enable();
-this.formularioAlta.get('esTrabajoActual')?.setValue(true); 
+this.formularioAlta.get('esProyectoActual')?.enable();
+this.formularioAlta.get('esProyectoActual')?.setValue(true); 
 }
 
 public cambiafechafin() {  
 console.log("cambiar fecha fin");
-this.formularioAlta.get('esTrabajoActual')?.setValue(false);    
+this.formularioAlta.get('esProyectoActual')?.setValue(false);    
 }
 public cambiafechafinedit(idx: number) {  
 console.log("cambiar fecha fin edit");
-this.lessons.at(idx).get('esTrabajoActualg')?.setValue(false);    
+this.lessons.at(idx).get('esProyectoActualg')?.setValue(false);    
 }
 
 // Seteo cruzado (importante) cuando defino si se coloca Si o No a la finalizacion de estudios (pasan cosas)!
@@ -299,13 +320,13 @@ this.lessons.at(idx).updateValueAndValidity();
 
 // Un simple conteo de caracteres del textarea
 public contarcaracteres() {
-this.sttt="Cantidad de caracters: "+ this.formularioAlta.get('descripcion')?.value?.length?.toString()+"/200";
+this.sttt="Cantidad de caracters: "+ this.formularioAlta.get('aprendisajeObtenido')?.value?.length?.toString()+"/200";
 //this.formularioAlta.get('tipoempleo')?.setValue('sebas2');  
 }
 
 // Conteo de caracteres para campo del edit
 public contarcaracteresedit(idx: number) {
-this.caracteresenedit[idx]="Cantidad de caracteres: "+this.lessons.at(idx).get('descripciong')?.value.toString().length +"/200";
+this.caracteresenedit[idx]="Cantidad de caracteres: "+this.lessons.at(idx).get('aprendisajeObtenidog')?.value.toString().length +"/200";
 }
 
 
@@ -314,36 +335,36 @@ public limpiar() {
 this.formularioAlta.get('fechafin')?.disable();
 this.formularioAlta.get('fechafin')?.clearValidators();
 this.formularioAlta.controls['fechafin'].updateValueAndValidity();
-this.formularioAlta.get('esTrabajoActual')?.disable(); 
-this.formularioAlta.get('esTrabajoActual')?.setValue('');    
-this.formularioAlta.get('tipoempleo')?.setValue('0');  
+this.formularioAlta.get('esProyectoActual')?.disable(); 
+this.formularioAlta.get('esProyectoActual')?.setValue('');    
 }
 
 // Funcion que entra en accion cuando decido editar un regitro al hacer click en un boton.-  
-public editarexperiencial(idx:number) {
+public editarproyecto(idx:number) {
 
 this.lessons.at(idx).get('fechainig')?.clearValidators;
 this.lessons.at(idx).updateValueAndValidity;    
 
 // la forma que encontre de que realice validaciones al editar entidad.-
 console.log(typeof this.lessons.at(idx).get('fechafing')?.errors?.['required']);
-console.log(this.lessons.at(idx).get('esTrabajoActualg')?.value);
+console.log(this.lessons.at(idx).get('esProyectoActualg')?.value);
 console.log("es vacio");
 console.log(this.lessons.at(idx).get('fechafing')?.value.toString()!=='');
 
 if (
- typeof this.lessons.at(idx).get('nombreEmpresag')?.errors?.['required']==='undefined' && 
- typeof this.lessons.at(idx).get('descripciong')?.errors?.['required']==='undefined' &&
- !this.lessons.at(idx).get('descripciong')?.errors?.['maxlength'] &&
+ typeof this.lessons.at(idx).get('nombreProyectog')?.errors?.['required']==='undefined' && 
+ typeof this.lessons.at(idx).get('entornog')?.errors?.['required']==='undefined' &&
+ !this.lessons.at(idx).get('marcog')?.errors?.['maxlength'] &&
  ((this.lessons.at(idx).get('fechafing')?.value.toString()!=='') || (        
-   this.lessons.at(idx).get('esTrabajoActualg')?.value.toString()==='true')
+   this.lessons.at(idx).get('esProyectoActualg')?.value.toString()==='true')
    ))
 {
 
-var idu=this.experiencialList[idx].id;   
-this.experiencialedit.id=idu;
-this.experiencialedit.nombreEmpresa=this.lessons.at(idx).get('nombreEmpresag')?.value;
-this.experiencialedit.descripcion=this.lessons.at(idx).get('descripciong')?.value;      
+var idu=this.proyectosList[idx].id;   
+this.proyectoedit.id=idu;
+this.proyectoedit.nombreProyecto=this.lessons.at(idx).get('nombreProyectog')?.value;
+this.proyectoedit.entorno=this.lessons.at(idx).get('entornog')?.value;    
+this.proyectoedit.marco=this.lessons.at(idx).get('marcog')?.value;    
 
 var ppp= this.lessons.at(idx).get('fechainig')?.value;    
 if (ppp.toString().length>10) {    
@@ -352,7 +373,7 @@ var dia = ppp.getDate();
 var mes = ppp.getMonth()+1;
 var ani = ppp.getFullYear();
 var ppp2=mes+"/"+dia+"/"+ani; } else {ppp2=ppp; console.log("menor q  ue 10");}
-this.experiencialedit.fechaini=ppp2;  
+this.proyectoedit.fechaini=ppp2;  
 
 var ppp7= this.lessons.at(idx).get('fechafing')?.value;
 if (ppp7.toString().length>10) {
@@ -360,24 +381,29 @@ var dia = ppp7.getDate();
 var mes = ppp7.getMonth()+1;
 var ani = ppp7.getFullYear();
 var ppp9=mes+"/"+dia+"/"+ani;  } else {ppp9=ppp7}
-this.experiencialedit.fechafin=ppp9;  
+this.proyectoedit.fechafin=ppp9;  
 
-this.experiencialedit.esTrabajoActual=this.lessons.at(idx).get('esTrabajoActualg')?.value;
-this.experiencialedit.tipoempleo=this.lessons.at(idx).get('tipoempleog')?.value;
-this.experiencialedit.personaid='1';
+this.proyectoedit.esProyectoActual=this.lessons.at(idx).get('esProyectoActualg')?.value;
+this.proyectoedit.link=this.lessons.at(idx).get('linkg')?.value;
+this.proyectoedit.imagen=this.lessons.at(idx).get('imageng')?.value;
+this.proyectoedit.persona=1;
+this.proyectoedit.funcion=this.lessons.at(idx).get('funciong')?.value;
+this.proyectoedit.resultado=this.lessons.at(idx).get('resultadog')?.value;
+this.proyectoedit.aprendisajeObtenido=this.lessons.at(idx).get('aprendisajeObtenidog')?.value;
+
 
 // Llama al metodo del servicio necesario para actualizar
-this.experiencialService.editarExperiencial(this.experiencialedit).subscribe(
+this.proyectosService.editarProyecto(this.proyectoedit).subscribe(
  (data) => {
    console.log(data);
-   Swal.fire('Usuario editado guardado','Usuario editado registrado con exito en el sistema','success');
+   Swal.fire('Proyecto editado guardado','Proyecto editado registrado con exito en el sistema','success');
 
    this.router.onSameUrlNavigation="reload";
-   this.router.navigate(["/experiencial"]);
+   this.router.navigate(["/proyectos"]);
   
  },(error)=> {
    console.log(error);
-   this.snack.open("Ha ocurrido un error en el sistema al querer guardar un usuario editado", 'Aceptar', {
+   this.snack.open("Ha ocurrido un error en el sistema al querer guardar un proyecto editado", 'Aceptar', {
      duration: 3000 
    });   
  })
@@ -390,5 +416,7 @@ duration: 3000
 }
 
   
+
+
 
 }

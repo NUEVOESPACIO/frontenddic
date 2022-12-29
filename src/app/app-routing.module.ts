@@ -6,6 +6,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { EducacionComponent } from './pages/educacion/educacion.component';
 import { TipoEmpleoComponent } from './pages/tipoempleo/tipoempleo.component';
 import { ExperiencialComponent } from './pages/experiencial/experiencial.component';
+import { ProyectosComponent } from './pages/proyectos/proyectos.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
    },{
     path:'experiencial',
     component : ExperiencialComponent,
+    pathMatch:'full',  
+   },{
+    path:'proyectos',
+    component : ProyectosComponent,
     pathMatch:'full',  
    }
 ];
