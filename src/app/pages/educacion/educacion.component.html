@@ -1,0 +1,213 @@
+
+ 
+<div class="container">
+    <div class="row" style="margin-top:20px;">
+        <div class="col-md-6 offset-md-3">  
+            <form [formGroup]="formularioEdicion">
+                <div class="add-lessons-form" [formGroup]="form">
+                    <ng-container formArrayName="lessons">
+                        <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">
+                            <br><p><b>Registro No: {{i}}</b></p>
+                            <br><p><b>Registro No: {{educacionList[i].id}}</b></p>
+                            <div class="lesson-form-row" [formGroupName]="i">
+                                <!--<div class="lesson-form-row" [formGroup]="lessonForm"></div>-->
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <input matInput
+                                        formControlName="instituciong"
+                                        placeholder="">
+                                </mat-form-field>
+                                <p class="notita" 
+                                    *ngIf="this.lessons.at(i).get('instituciong')?.errors?.['required']; else nadae">
+                                    (Nombre de la Institucion no debe ser nulo)
+                                </p>
+                                <ng-template #nadae>
+                                <p class="notita4">&nbsp;</p>
+                                </ng-template>                
+                                <mat-form-field class="full-width" appearance="outline">
+                                <input matInput
+                                    formControlName="titulo_obtenidog"
+                                    placeholder="">
+                                </mat-form-field>
+                                <p class="notita" 
+                                    *ngIf="this.lessons.at(i).get('titulo_obtenidog')?.errors?.['required']; else nada">
+                                    (El nombre del titulo no puede estar vacio)
+                                </p> 
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <input onkeydown="return false" matInput
+                                        formControlName="fechainig" [placeholder]="placehold(1,i)" [matDatepicker]="picker5" >
+                                    <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker5></mat-datepicker>  
+                                </mat-form-field>
+                                <p class="notita" 
+                                    *ngIf="this.lessons.at(i).get('fechainig')?.errors?.['required']; else nada">
+                                    (Debe seleccionar fecha haciendo click en el icono del calenario)
+                                </p>   
+         
+                                <mat-form-field class="full-width" appearance="outline">
+                                <select matNativeControl formControlName="finalizadog" 
+                                placeholder="{{educacionList[i].finalizado}}" (change)="finalizadochangeedit($event,i)">
+                                <option value="true">SI</option>
+                                <option value="false">NO</option>                        
+                                </select>
+                                </mat-form-field>
+                                <p class="notita" 
+                                *ngIf="this.lessons.at(i).get('finalizadog')?.errors?.['required']; else siono">
+                                (Falta seleccionar SI o NO)</p>  
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                <input onkeydown="return false" matInput
+                                    formControlName="fechafing" [placeholder]="placehold(2,i)" 
+                                        [matDatepicker]="picker6" (dateChange)="cambiafechafinedit(i)" >
+                                    <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker6></mat-datepicker>  
+                                </mat-form-field>
+                                <p class="notita" 
+                                *ngIf="this.lessons.at(i).get('fechafing')?.errors?.['required']; else nada">
+                                (Se debe pickar en calendario para definir fecha de fin del estudio)</p>  
+                            <mat-form-field class="full-width" appearance="outline">
+                                <input matInput
+                                formControlName="ubicaciong"     
+                                    placeholder="">
+                            </mat-form-field>
+                            <p class="notita" 
+                                *ngIf="this.lessons.at(i).get('ubicaciong')?.errors?.['required']; else nada">
+                                (La ubicacion de la Institucion no puede estar vacia)
+                            </p>       
+
+                            <mat-form-field class="full-width" appearance="outline">
+                                <textarea cols="35" rows="4"  matInput
+                                formControlName="comentariog"    
+                                    placeholder="" (ngModelChange)="contarcaracteresedit(i)"></textarea>
+                            </mat-form-field>
+                            <p class="notita3" 
+                            *ngIf="this.lessons.at(i).get('comentariog')?.errors?.['required']; else nadan">
+                            (El campo de Comentario no puede estar vacio)
+                            </p>
+                            <p class="notita4" 
+                                *ngIf="this.lessons.at(i).get('comentariog')?.errors?.['maxlength']; else nada">
+                                (La cantidad de caracteres no puede superar los 200)
+                            </p>
+                            <ng-template #nadan>
+                                <p class="notita3">{{caracteresenedit[i]}}</p>
+                            </ng-template>
+                            <br><br><mat-icon class="edit-btn" style="width:'30px'; height:'30px'" (click)="editareducacion(i);">
+                            edit</mat-icon><p>Editar</p>       
+                            <mat-icon class="delete-btn" style="width:'30px'; height:'30px'" (click)="eliminareducacion(i);">
+                            delete_forever</mat-icon><p>Eliminar</p>
+                            </div>
+                       </ng-container>    
+                    </ng-container>    
+                </div>        
+            </form>
+        </div>
+    </div>      
+</div>    
+
+
+
+
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img src="../../../assets/2583145.png" width="60" height="60">
+                </div>
+                <h1 class="text-center">Registrar Institucion Educativa</h1>           
+                <form [formGroup]="formularioAlta" (ngSubmit)="formSubmit()">
+                    
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Institucion</mat-label>
+                        <input type="text" required formControlName="institucion" matInput placeholder="Digite nombre de la institucion">                        
+                    </mat-form-field>
+                    <p class="notita" 
+                        *ngIf="this.formularioAlta.get('institucion')?.errors?.['required']; else nada">
+                        (Nombre de la Institucion no debe ser nulo)
+                    </p>
+                    <ng-template #nada>
+                        <p class="notita4">&nbsp;</p>
+                    </ng-template>
+                    <ng-template #nada2>
+                        <p class="notita3">{{sttt}}</p>
+                    </ng-template>
+                    <ng-template #siono>
+                          <p class="notita">&nbsp;</p>      
+                    </ng-template>
+
+                                  
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Titulo Obtenido</mat-label>
+                        <input required formControlName="titulo_obtenido"  matInput placeholder="Ingrese el titulo obtenido">
+                    </mat-form-field>
+                    <p class="notita" 
+                        *ngIf="this.formularioAlta.get('titulo_obtenido')?.errors?.['required']; else nada">
+                        (El nombre del titulo no puede estar vacio)
+                    </p> 
+
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Fecha de Inicio</mat-label>  
+                        <input onkeydown="return false" name="fechaini" formControlName="fechaini" matInput [matDatepicker]="picker4" (dateChange)="cambiafechaini()">                       
+                        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                        <mat-datepicker #picker4></mat-datepicker>                      
+                    </mat-form-field>
+                    <p class="notita" 
+                        *ngIf="this.formularioAlta.get('fechaini')?.errors?.['required']; else nada">
+                        (Debe seleccionar fecha haciendo click en el icono del calenario)
+                    </p>  
+
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>¿Finalizado?</mat-label>
+                        <select matNativeControl formControlName="finalizado" (change)="finalizadochange($event)">                                                 
+                          <option value="false">NO</option>
+                          <option value="true">SI</option>                          
+                        </select>
+                    </mat-form-field>
+                    <p class="notita" 
+                    *ngIf="this.formularioAlta.get('finalizado')?.errors?.['required']; else siono">
+                    (Falta seleccionar SI o NO)</p>  
+                    
+
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Fecha Finalizacion</mat-label>  
+                        <input onkeydown="return false"  formControlName="fechafin" matInput [matDatepicker]="picker3" (dateChange)="cambiafechafin()">                       
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>                      
+                    </mat-form-field>                  
+                    <p class="notita" 
+                    *ngIf="this.formularioAlta.get('fechafin')?.errors?.['required']; else nada">
+                    (Se debe pickar en calendario para definir fecha de fin del estudio)</p>  
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Ubicacion</mat-label>
+                        <input required  formControlName="ubicacion" matInput placeholder="Ingrese ubicacion de la Institucion">
+                    </mat-form-field>
+                    <p class="notita" 
+                       *ngIf="this.formularioAlta.get('ubicacion')?.errors?.['required']; else nada">
+                        (La ubicacion de la Institucion no puede estar vacia)
+                    </p>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Comentario</mat-label>
+                        <textarea cols="35" rows="4" required formControlName="comentario"  matInput placeholder="Comentarios asociados" (ngModelChange)="contarcaracteres()"></textarea>
+                    </mat-form-field>
+                    <p class="notita3" 
+                        *ngIf="this.formularioAlta.get('comentario')?.errors?.['required']; else nada2">
+                        (El campo de Comentario no puede estar vacio)
+                    </p>
+                    <p class="notita4" 
+                        *ngIf="this.formularioAlta.get('comentario')?.errors?.['maxlength']; else nada">
+                        (La cantidad de caracteres no puede superar los 200)
+                    </p>
+
+                    <div class="container text-center">
+                        <button mat-raised-button color="primary">Registrar</button>
+                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="accent" (click)="limpiar();">Limpiar</button>
+                    </div>
+                </form>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

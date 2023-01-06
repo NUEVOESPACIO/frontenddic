@@ -1,0 +1,76 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    
+    <mat-nav-list *ngIf="!isLoggedIn">      
+      <a mat-list-item href="#sobremi">Sobre mi</a>
+      <a mat-list-item href="#educacion">Educación & Formacion</a>
+      <a mat-list-item href="#experiencia">Experiencia Laboral</a>
+      <a mat-list-item href="#skills">Soft & Hard Skills</a>     
+      <a mat-list-item href="#proyectos">Proyectos en los que participe</a>   
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="isLoggedIn">      
+      <a mat-list-item>Modo Edicion: Activado</a>    
+      <br>
+      <div style="text-align: center; border: 0px solid"><button type="button" class="btn btn-warning">Log Out</button></div>    
+    </mat-nav-list>
+
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>PortFolio Sebastian Caparros (para Argentina Programa)
+        <mat-nav-list>
+          <a mat-list-item href="#sebs">Sobre mi</a>
+          <p style="align: right;"><img src="../../assets/login.JPG" width="50px" height="50px" (click)="alter();"></p>
+
+        </mat-nav-list>
+      </span>
+    </mat-toolbar>
+    
+    <div *ngIf="!isLoggedIn">
+      <div *ngIf="showlog">
+        <app-skills></app-skills>
+      </div>
+      
+      <p id="sobremi"><br><br><br></p>
+      <app-personas></app-personas>
+      <p id="educacion"><br><br><br></p>
+      <app-educacion></app-educacion>
+      <p id="experiencia"><br><br><br></p>
+      <app-experiencial></app-experiencial>
+      <p id="skills"><br><br><br></p>
+      <app-skills></app-skills>
+      <p id="proyectos"><br><br><br></p>
+      <app-proyectos></app-proyectos>      
+
+    </div>
+
+    <div *ngIf="isLoggedIn">
+      <p id="arriba"></p>
+      <app-dashboard></app-dashboard>
+      <app-dashboard1></app-dashboard1>
+      <app-dashboard2></app-dashboard2>
+      
+    </div>
+
+    
+
+    <!--<app-uno></app-uno> -->
+
+  </mat-sidenav-content>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
+
