@@ -164,12 +164,12 @@ this.proyecto.aprendisajeObtenido=this.formularioAlta.get('aprendisajeObtenido')
 this.proyectosService.anadirProyecto(this.proyecto).subscribe(
  (data) => {
    console.log(data);
-   Swal.fire('Experiencia guardada','Experiencia registrada con exito en el sistema','success');
+   Swal.fire('Proyecto guardado','Proyecto guardado con exito en el sistema','success');
    this.router.onSameUrlNavigation="reload";
    this.router.navigate(["/proyectos"]);        
  },(error)=> {
    console.log(error);
-   this.snack.open("Ha ocurrido un error en el sistema", 'Aceptar', {
+   this.snack.open("Ha ocurrido un error en el sistema. Verificar permisos", 'Aceptar', {
      duration: 3000 
    });   
  })} else {
@@ -261,7 +261,9 @@ this.proyectosService.eliminarProyecto(idu).subscribe((data)=>{console.log(data)
  this.router.navigate(["/proyectos"]);            
 
 },(error)=>{console.log("No se pudo eliminar el proyecto");
-Swal.fire('No se pudo eliminar el proyecto','No se pudo eliminar usuario','success');
+this.snack.open("No se pudo eliminar proyecto. Verificar permisos", 'Aceptar', {
+  duration: 3000 
+});   
 });    
 }
 
@@ -353,7 +355,8 @@ console.log("es vacio");
 console.log(this.lessons.at(idx).get('fechafing')?.value.toString()!=='');
 
 if (
- typeof this.lessons.at(idx).get('nombreProyectog')?.errors?.['required']==='undefined' && 
+  !this.lessons.at(idx).get('aprendisajeObtenidog')?.errors?.['maxlength'] &&
+  typeof this.lessons.at(idx).get('nombreProyectog')?.errors?.['required']==='undefined' && 
  typeof this.lessons.at(idx).get('entornog')?.errors?.['required']==='undefined' &&
  !this.lessons.at(idx).get('marcog')?.errors?.['maxlength'] &&
  ((this.lessons.at(idx).get('fechafing')?.value.toString()!=='') || (        
@@ -404,7 +407,7 @@ this.proyectosService.editarProyecto(this.proyectoedit).subscribe(
   
  },(error)=> {
    console.log(error);
-   this.snack.open("Ha ocurrido un error en el sistema al querer guardar un proyecto editado", 'Aceptar', {
+   this.snack.open("Ha ocurrido un error en el sistema al querer guardar un proyecto editado. Verificar permisos", 'Aceptar', {
      duration: 3000 
    });   
  })

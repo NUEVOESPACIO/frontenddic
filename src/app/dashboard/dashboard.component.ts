@@ -24,8 +24,8 @@ export class DashboardComponent {
   altus=(this.altref-100).toString();
   //codelink:any= ["sobremi","educacion"];
 
-  varia=[PersonasComponent,EducacionComponent];
-  cols=[3,3];
+  varia=[PersonasComponent];
+  cols=[3];
 
 
 
@@ -34,14 +34,13 @@ export class DashboardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'ABM Sobre mi', cols: 3, rows: 1 },
-          { title: 'ABM Tabla Educacion', cols: 3, rows: 1 },          
+          { title: 'ABM Sobre mi', cols: 3, rows: 1 },          
         ];
       }
 
       return [
         { title: 'ABM Sobre mi', cols: 3, rows: 1 },
-        { title: 'ABM Tabla Educacion', cols: 3, rows: 1 },        
+        
       ];
     })
   );
@@ -74,17 +73,15 @@ export class DashboardComponent {
 
 
   expandirm(ca: number) {
-    this.altref=2000;
+    this.altref=1400;
     this.altur=this.altref.toString()+"px";
-    this.altus=(this.altref-100).toString();    
-    if (ca===1) {this.cols[0]=2;this.cols[1]=4} else {this.cols[0]=4;this.cols[1]=2};
+    this.altus=(this.altref-100).toString();        
   };
   contraerm(ca: number) {
     this.altref=100;
     this.altur=this.altref.toString()+"px";
     this.altus=(this.altref-100).toString(); 
-    this.cols[0]=3;
-    this.cols[1]=3; 
+    
    
 
   };

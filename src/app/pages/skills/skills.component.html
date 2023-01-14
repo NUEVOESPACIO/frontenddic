@@ -1,213 +1,135 @@
-<p>skills works!</p>
-
 <div class="container">
-    <div class="row" style="margin-top:20px;">
-        <div class="col-md-6 offset-md-3">  
+    <div class="d-flex justify-content-center">
+        <div class="col-md-offset-1 col-md-10 col-md-pull-1">
             <form [formGroup]="formularioEdicion">
                 <div class="add-lessons-form" [formGroup]="form">
                     <ng-container formArrayName="lessons">
                         <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">
-                            <br><p><b>Registro No: {{i}}</b></p>
-                            <br><p><b>Registro No: {{skillList[i].id}}</b></p>
+                            <hr class="sepa">
+                            <b>Lista No: {{i+1}}</b> | Id en Tabla: {{skillList[i].id}}
+                            <hr>
                             <div class="lesson-form-row" [formGroupName]="i">
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="nombreskillg"
-                                        placeholder="{{skillList[i].nombreskill}}">
-                                </mat-form-field>
-                                <p class="notita" 
+                                <div class="box">
+                                    <div class="one">
+                                        <p class="ppinterno">Nombre del Skill:</p>
+                                    </div>
+                                    <div class="two">
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <input matInput formControlName="nombreskillg"
+                                                placeholder="{{skillList[i].nombreskill}}">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <p class="notita"
                                     *ngIf="this.lessons.at(i).get('nombreskillg')?.errors?.['required']; else nadae">
-                                    (Nombre de la Habilidad no debe ser nulo)
+                                    (Habilidad no debe ser nulo)
                                 </p>
                                 <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>                
-                                                                
+                                    <p class="notita">&nbsp;</p>
+                                </ng-template>
 
-                                <mat-form-field class="full-width" appearance="outline">
-                                <select matNativeControl formControlName="tipohsg"  
-                                placeholder="{{skillList[i].tipohs}}" >                                
-                                <option value="1">HARD</option>
-                                <option value="2">SOFT</option>                        
-                                </select>
-                                </mat-form-field>
-                                <p class="notita" 
-                                *ngIf="this.lessons.at(i).get('tipohsg')?.errors?.['required']; else siono">
-                                (Falta seleccionar HARD o SOFT)</p>  
-
-                                
-
-                                
-                            <mat-form-field class="full-width" appearance="outline">
-                                <textarea cols="35" rows="4"  matInput
-                                formControlName="descripciong"    
-                                    placeholder="{{skillList[i].descripcion}}" (ngModelChange)="contarcaracteresedit(i)"></textarea>
-                            </mat-form-field>
-                            <p class="notita3" 
-                            *ngIf="this.lessons.at(i).get('descripciong')?.errors?.['required']; else nadan">
-                            (El campo de Descripcion no puede estar vacio)
-                            </p>
-                            <p class="notita4" 
-                                *ngIf="this.lessons.at(i).get('descripciong')?.errors?.['maxlength']; else nada">
-                                (La cantidad de caracteres no puede superar los 200)
-                            </p>
-                            <ng-template #nadan>
-                                <p class="notita3">{{caracteresenedit[i]}}</p>
-                            </ng-template>
+                                <div class="box">
+                                    <div class="one">
+                                        <p class="ppinterno">Clasificacion:</p>
+                                    </div>
+                                    <div class="two">
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <select matNativeControl formControlName="tipohsg"
+                                                placeholder="{{skillList[i].tipohs}}">
+                                                <option value="1">HARD</option>
+                                                <option value="2">SOFT</option>
+                                            </select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <p class="notita"
+                                    *ngIf="this.lessons.at(i).get('tipohsg')?.errors?.['required']; else siono">
+                                    (Falta seleccionar HARD o SOFT)</p>
 
 
 
-                            <mat-form-field class="full-width" appearance="outline">
-                                <input matInput
-                                    formControlName="valmaxg"
-                                    placeholder="{{skillList[i].valmaxg}}">
-                            </mat-form-field>
-                            <p class="notita" 
-                                *ngIf="this.lessons.at(i).get('valmaxg')?.errors?.['required']; else nadae">
-                                (Nombre del valor Maximo no debe ser nulo o cero y debe ser un valor)
-                            </p>
-                            <p class="notita" 
-                            *ngIf="this.lessons.at(i).get('valmaxg')?.errors?.['pattern']; else nada">
-                            (Solo se admiten valores numericos: [0 .. 9])
-                        </p>
+
+                                <div class="box">
+                                    <div class="one">
+                                        <p class="ppinterno">Descripcion:</p>
+                                    </div>
+                                    <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                            <textarea cols="35" rows="4" matInput formControlName="descripciong"
+                                                placeholder="{{skillList[i].descripcion}}"
+                                                (ngModelChange)="contarcaracteresedit(i)"></textarea>
+                                        </mat-form-field></div>
+                                </div>
+                                <p class="notita"
+                                    *ngIf="this.lessons.at(i).get('descripciong')?.errors?.['required']; else nadan">
+                                    (El campo no puede estar vacio)
+                                </p>
+                                <p class="notita"
+                                    *ngIf="this.lessons.at(i).get('descripciong')?.errors?.['maxlength']; else nada">
+                                    (La cantidad de caracteres no puede superar los 200)
+                                </p>
+                                <ng-template #nadan>
+                                    <p class="notita">{{caracteresenedit[i]}}</p>
+                                </ng-template>
+
+                                <div class="box">
+                                    <div class="one">
+                                        <p class="ppinterno">Valor Maximo:</p>
+                                    </div>
+                                    <div class="two">
+
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <input matInput formControlName="valmaxg"
+                                                placeholder="{{skillList[i].valmaxg}}">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <p class="notita"
+                                    *ngIf="this.lessons.at(i).get('valmaxg')?.errors?.['required']; else nadae">
+                                    (No debe ser nulo o cero)
+                                </p>
+                                <p class="notita"
+                                    *ngIf="this.lessons.at(i).get('valmaxg')?.errors?.['pattern']; else nada">
+                                    (Solo valores numericos: [0 .. 9])
+                                </p>
+                                <div class="box">
+                                    <div class="one">
+                                        <p class="ppinterno">Valor Real</p>
+                                    </div>
+                                    <div class="two">
+
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <input matInput formControlName="valorg"
+                                                placeholder="{{skillList[i].valorg}}">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <p class="notita"
+                                    *ngIf="this.lessons.at(i).get('valorg')?.errors?.['required']; else nadae">
+                                    (No debe ser nulo o cero)
+                                </p>
+                                <p class="notita"
+                                    *ngIf="this.lessons.at(i).get('valorg')?.errors?.['pattern']; else nada">
+                                    (Solo valores numericos: [0 .. 9])
+                                </p>
 
 
-                            <mat-form-field class="full-width" appearance="outline">
-                                <input matInput
-                                    formControlName="valorg"
-                                    placeholder="{{skillList[i].valorg}}">
-                            </mat-form-field>
-                            <p class="notita" 
-                                *ngIf="this.lessons.at(i).get('valorg')?.errors?.['required']; else nadae">
-                                (Nombre del valor no debe ser nulo o cero y debe ser un valor)
-                            </p>
-                            <p class="notita" 
-                            *ngIf="this.lessons.at(i).get('valorg')?.errors?.['pattern']; else nada">
-                            (Solo se admiten valores numericos: [0 .. 9])
-                        </p>
 
 
-                            
 
+                                <hr>
+                                <button type="button" class="btn btn-outline-dark" (click)="editarskill(i);"><img
+                                        src="../../../assets/add.JPG" width="30"
+                                        height="30">Editar</button>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <br><br><mat-icon class="edit-btn" style="width:'30px'; height:'30px'" (click)="editarskill(i);">
-                            edit</mat-icon><p>Editar</p>       
-                            <mat-icon class="delete-btn" style="width:'30px'; height:'30px'" (click)="eliminarskill(i);">
-                            delete_forever</mat-icon><p>Eliminar</p>
+                                <button type="button" class="btn btn-outline-dark" (click)="eliminarskill(i);"><img
+                                        src="../../../assets/eliminar.JPG" width="30" height="30">Eliminar</button>
+
+                                <hr>
                             </div>
-                       </ng-container>    
-                    </ng-container>    
-                </div>        
-            </form>
-        </div>
-    </div>      
-</div>    
-
-
-
-
-
-<div class="bootstrap-wrapper">
-    <div class="container">
-        <div class="row" style="margin-top:20px;">
-            <div class="col-md-6 offset-md-3">
-                <div class="container text-center">
-                    <img src="../../../assets/2583145.png" width="60" height="60">
+                        </ng-container>
+                    </ng-container>
                 </div>
-                <h1 class="text-center">Registrar Habilidad & Skill</h1>           
-                <form [formGroup]="formularioAlta" (ngSubmit)="formSubmit()">
-                    
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Nombre de la Habilidad & Skill</mat-label>
-                        <input type="text" required formControlName="nombreskill" matInput placeholder="Digite nombre de la institucion/empresa">                        
-                    </mat-form-field>
-                    <p class="notita" 
-                        *ngIf="this.formularioAlta.get('nombreskill')?.errors?.['required']; else nada">
-                        (Nombre de la Habilidad & Skill no debe ser nulo)
-                    </p>
-                    <ng-template #nada>
-                        <p class="notita4">&nbsp;</p>
-                    </ng-template>
-                    <ng-template #nada2>
-                        <p class="notita3">{{sttt}}</p>
-                    </ng-template>
-                    <ng-template #siono>
-                          <p class="notita">&nbsp;</p>      
-                    </ng-template>                                 
-
-     
-
-
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label>¿Es una habildiad de tipo HARD o SOFT?. Clasificar</mat-label>
-                        <select matNativeControl formControlName="tipohs">
-                            <option value="0"></option>                     
-                            <option value="1">HARD</option>
-                            <option value="2">SOFT</option>                         
-                        </select>
-                    </mat-form-field>
-                    <p class="notita" 
-                    *ngIf="this.formularioAlta.get('tipohs')?.errors?.['required']; else siono">
-                    (Falta seleccionar HARD o SOFT)</p>  
-                    
-
-
-                    
-
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Descripcion de la Habilidad & Skill</mat-label>
-                        <textarea cols="35" rows="4" required formControlName="descripcion"  matInput placeholder="Comentarios asociados" (ngModelChange)="contarcaracteres()"></textarea>
-                    </mat-form-field>
-                    <p class="notita3" 
-                        *ngIf="this.formularioAlta.get('descripcion')?.errors?.['required']; else nada2">
-                        (El campo de Descripcion no puede estar vacio)
-                    </p>
-                    <p class="notita4" 
-                        *ngIf="this.formularioAlta.get('descripcion')?.errors?.['maxlength']; else nada">
-                        (La cantidad de caracteres no puede superar los 200)
-                    </p>
-
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Valor Maximo de la Habilidad</mat-label>
-                        <input type="text" required formControlName="valmax" matInput placeholder="Digite nombre de la institucion/empresa">                        
-                    </mat-form-field>
-                    <p class="notita" 
-                        *ngIf="this.formularioAlta.get('valmax')?.errors?.['required']; else nada">
-                        (El Valor Maximo no debe ser nulo)
-                    </p>
-                    <p class="notita" 
-                    *ngIf="this.formularioAlta.get('valmax')?.errors?.['pattern']; else nada">
-                    (Solo se admiten valores numericos: [0 .. 9])
-                </p>
-
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Valor de la Habilidad</mat-label>
-                        <input type="text" required formControlName="valor" matInput placeholder="Digite nombre de la institucion/empresa">                        
-                    </mat-form-field>
-                    <p class="notita" 
-                        *ngIf="this.formularioAlta.get('valor')?.errors?.['required']; else nada">
-                        (El valor de la Habilidad & Skill no debe ser nulo)
-                    </p>
-                    <p class="notita" 
-                    *ngIf="this.formularioAlta.get('valor')?.errors?.['pattern']; else nada">
-                    (Solo se admiten valores numericos: [0 .. 9])
-                </p>
-
-
-
-
-
-
-
-
-                    <div class="container text-center">
-                        <button mat-raised-button color="primary">Registrar</button>
-                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="accent" (click)="limpiar();">Limpiar</button>
-                    </div>
-                </form>
-                <br><br><br>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -215,3 +137,136 @@
 
 
 
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-offset-1 col-md-10 col-md-pull-1">
+            <form [formGroup]="formularioAlta" (ngSubmit)="formSubmit()">
+                <hr class="sepan">
+                <img src="../../../assets/add.JPG" width="40" height="40"><b>Agregar Nueva Skill</b>
+
+                <hr>
+                <div class="lesson-form-row">
+                    <div class="box">
+                        <div class="one">
+                            <p class="ppinterno">Nombre Skill:</p>
+                        </div>
+                        <div class="two">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Nombre de la Habilidad & Skill</mat-label>
+                                <input type="text" required formControlName="nombreskill" matInput
+                                    placeholder="Digite nombre de la institucion/empresa">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <p class="notita" *ngIf="this.formularioAlta.get('nombreskill')?.errors?.['required']; else nada">
+                        (Nombre del Skill no debe ser nulo)
+                    </p>
+                    <ng-template #nada>
+                        <p class="notita">&nbsp;</p>
+                    </ng-template>
+                    <ng-template #nada2>
+                        <p class="notita">{{sttt}}</p>
+                    </ng-template>
+                    <ng-template #siono>
+                        <p class="notita">&nbsp;</p>
+                    </ng-template>
+
+
+
+                    <div class="box">
+                        <div class="one">
+                            <p class="ppinterno">Clasificacion del Skill</p>
+                        </div>
+                        <div class="two">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label>¿Es una habilidad de tipo HARD o SOFT?. Clasificar</mat-label>
+                                <select matNativeControl formControlName="tipohs">
+                                    <option value="0"></option>
+                                    <option value="1">HARD</option>
+                                    <option value="2">SOFT</option>
+                                </select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <p class="notita" *ngIf="this.formularioAlta.get('tipohs')?.errors?.['required']; else siono">
+                        (Falta seleccionar HARD o SOFT)</p>
+
+
+
+                    <div class="box">
+                        <div class="one">
+                            <p class="ppinterno">Descripcion del Skill</p>
+                        </div>
+                        <div class="two">
+
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Descripcion de la Habilidad & Skill</mat-label>
+                                <textarea cols="55" rows="8" required formControlName="descripcion" matInput
+                                    placeholder="Comentarios asociados" (ngModelChange)="contarcaracteres()"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <p class="notita" *ngIf="this.formularioAlta.get('descripcion')?.errors?.['required']; else nada2">
+                        (Descripcion no puede estar vacio)
+                    </p>
+                    <p class="notita" *ngIf="this.formularioAlta.get('descripcion')?.errors?.['maxlength']; else nada">
+                        (La cantidad de caracteres no puede superar los 200)
+                    </p>
+                    <div class="box">
+                        <div class="one">
+                            <p class="ppinterno">Valor Maximo Posible</p>
+                        </div>
+                        <div class="two">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Valor Maximo de la Habilidad</mat-label>
+                                <input type="text" required formControlName="valmax" matInput
+                                    placeholder="Digite nombre de la institucion/empresa">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <p class="notita" *ngIf="this.formularioAlta.get('valmax')?.errors?.['required']; else nada">
+                        (El Valor Maximo no debe ser nulo)
+                    </p>
+                    <p class="notita" *ngIf="this.formularioAlta.get('valmax')?.errors?.['pattern']; else nada">
+                        (Solo se admiten valores numericos: [0 .. 9])
+                    </p>
+                    <div class="box">
+                        <div class="one">
+                            <p class="ppinterno">Valor asignado</p>
+                        </div>
+                        <div class="two">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Valor de la Habilidad</mat-label>
+                                <input type="text" required formControlName="valor" matInput
+                                    placeholder="Digite valor de la habilidad">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <p class="notita" *ngIf="this.formularioAlta.get('valor')?.errors?.['required']; else nada">
+                        (El valor del Skill no debe ser nulo)
+                    </p>
+                    <p class="notita" *ngIf="this.formularioAlta.get('valor')?.errors?.['pattern']; else nada">
+                        (Solo se admiten valores numericos: [0 .. 9])
+                    </p>
+
+
+
+
+
+
+
+                    <hr>
+                    <div class="container text-center">
+                        <button mat-raised-button color="white"><img src="../../../assets/add.JPG" width="30"
+                                height="30">Agregar</button>
+                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="white"
+                            (click)="limpiar();"><img src="../../../assets/clean.JPG" width="30"
+                                height="30">Limpiar</button>
+                    </div>
+                    <hr>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

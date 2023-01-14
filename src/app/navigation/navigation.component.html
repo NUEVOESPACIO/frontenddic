@@ -1,76 +1,86 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    
-    <mat-nav-list *ngIf="!isLoggedIn">      
-      <a mat-list-item href="#sobremi">Sobre mi</a>
-      <a mat-list-item href="#educacion">Educación & Formacion</a>
-      <a mat-list-item href="#experiencia">Experiencia Laboral</a>
-      <a mat-list-item href="#skills">Soft & Hard Skills</a>     
-      <a mat-list-item href="#proyectos">Proyectos en los que participe</a>   
-    </mat-nav-list>
 
-    <mat-nav-list *ngIf="isLoggedIn">      
-      <a mat-list-item>Modo Edicion: Activado</a>    
-      <br>
-      <div style="text-align: center; border: 0px solid"><button type="button" class="btn btn-warning">Log Out</button></div>    
-    </mat-nav-list>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <div class="lateral">
+      <div class="bloque1">
+        <img class="argprog" src="../../assets/argentinaprogramal.JPG">
+      </div>      
+      <hr>
 
+      <p class="titi" style="text-align:center;">PortFolio Sebastián Caparros</p> 
+      <div class="bloque1" *ngIf="fasel=='loggedasuser' || fasel=='logedasadmin'">
+        <img class="sebas" src="../../assets/fotoseba.JPG">
+      </div>    
+      <hr>
+  
 
+      <div *ngIf="fasel=='logedasuser' || fasel=='logedasadmin'">
+        <mat-nav-list>
+          <a mat-list-item href="#sobremi"><img style="margin-right: 10px" src="../../assets/flechasimple.png" width="20px" height="12px">Sobre mi</a>
+          <a mat-list-item href="#educacion"><img style="margin-right: 10px" src="../../assets/flechasimple.png" width="20px" height="12px">Educación & Formacion</a>
+          <a mat-list-item href="#experiencia"><img style="margin-right: 10px" src="../../assets/flechasimple.png" width="20px" height="12px">Experiencia Laboral</a>
+          <a mat-list-item href="#skills"><img style="margin-right: 10px" src="../../assets/flechasimple.png" width="20px" height="12px">Soft & Hard Skills</a>
+          <a mat-list-item href="#proyectos"><img style="margin-right: 10px" src="../../assets/flechasimple.png" width="20px" height="12px">Proyectos</a>
+        </mat-nav-list>
+      </div>
+      
+
+    </div>
   </mat-sidenav>
-  <mat-sidenav-content>
+
+
+  <mat-sidenav-content class="fondocentral">
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>PortFolio Sebastian Caparros (para Argentina Programa)
-        <mat-nav-list>
-          <a mat-list-item href="#sebs">Sobre mi</a>
-          <p style="align: right;"><img src="../../assets/login.JPG" width="50px" height="50px" (click)="alter();"></p>
-
-        </mat-nav-list>
-      </span>
-    </mat-toolbar>
-    
-    <div *ngIf="!isLoggedIn">
-      <div *ngIf="showlog">
-        <app-skills></app-skills>
-      </div>
       
-      <p id="sobremi"><br><br><br></p>
-      <app-personas></app-personas>
-      <p id="educacion"><br><br><br></p>
-      <app-educacion></app-educacion>
-      <p id="experiencia"><br><br><br></p>
-      <app-experiencial></app-experiencial>
-      <p id="skills"><br><br><br></p>
-      <app-skills></app-skills>
-      <p id="proyectos"><br><br><br></p>
-      <app-proyectos></app-proyectos>      
+      <span class="date">
+        <div *ngIf="fases=='nologeado'"><button type="button" class="btn btn-outline-light"
+            (click)="login()">LogIn</button>&nbsp;&nbsp;&nbsp;<label *ngIf="nuser=='user' || nuser=='admin'">Usuario:
+            {{nuser}}</label>
+        </div>
+        <div *ngIf="fases=='porlogearse'"><button type="button" class="btn btn-outline-light"
+            (click)="getback()">Inicio</button>&nbsp;&nbsp;&nbsp;<label *ngIf="nuser=='user' || nuser=='admin'">Usuario:
+            {{nuser}}</label>
+        </div>
+        <div *ngIf="fases=='logeado'"><button type="button" class="btn btn-outline-light" (click)="onLogOut()"
+            *ngIf="fases=='logeado'">LogOut</button>&nbsp;&nbsp;&nbsp;<label
+            *ngIf="nuser=='user' || nuser=='admin'">Usuario: {{nuser}}</label>
+        </div>
 
+      </span>
+      
+
+    </mat-toolbar>
+    <!-- Esta es la parte Central es decir del contenido -->
+    <div *ngIf="fasem=='inicio'">
+      <app-portada-inicial></app-portada-inicial>
     </div>
 
-    <div *ngIf="isLoggedIn">
-      <p id="arriba"></p>
+    <div *ngIf="fasem=='showloginform'">
+      <app-login></app-login>
+    </div>
+
+    <div *ngIf="fasem=='logedasuser'">
+      <app-todo></app-todo>      
+    </div>
+
+    <div *ngIf="fasem=='logedasadmin'">
+
+     
       <app-dashboard></app-dashboard>
       <app-dashboard1></app-dashboard1>
       <app-dashboard2></app-dashboard2>
-      
+      <app-dashboard3></app-dashboard3>
+      <app-dashboard4></app-dashboard4>
+      <app-dashboard5></app-dashboard5>
+      <app-todo></app-todo>    
+
     </div>
-
-    
-
-    <!--<app-uno></app-uno> -->
 
   </mat-sidenav-content>
   <router-outlet></router-outlet>
 </mat-sidenav-container>
-

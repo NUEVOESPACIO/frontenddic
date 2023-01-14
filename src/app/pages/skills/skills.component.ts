@@ -117,7 +117,7 @@ this.skillsService.anadirSkills(this.skill).subscribe(
    this.router.navigate(["/skills"]);        
  },(error)=> {
    console.log(error);
-   this.snack.open("Ha ocurrido un error en el sistema", 'Aceptar', {
+   this.snack.open("Ha ocurrido un error en el sistema. Verificar Permisos.", 'Aceptar', {
      duration: 3000 
    });   
  })} else {
@@ -193,7 +193,9 @@ this.skillsService.eliminarSkills(idu).subscribe((data)=>{console.log(data)
  this.router.navigate(["/skills"]);            
 
 },(error)=>{console.log("No se pudo eliminar la Habilidad");
-Swal.fire('No se pudo eliminar la Habilidad','No se pudo eliminar la habilidad','success');
+this.snack.open("No se pudo eliminar habilidad. Verifique permisos", 'Aceptar', {
+  duration: 3000 
+});   
 });    
 }
 
@@ -259,7 +261,7 @@ this.skillsService.editarSkills(this.skilledit).subscribe(
   
  },(error)=> {
    console.log(error);
-   this.snack.open("Ha ocurrido un error en el sistema al querer guardar una habilidad editado", 'Aceptar', {
+   this.snack.open("Ha ocurrido un error en el sistema al querer guardar una habilidad editado. Verifique permisos", 'Aceptar', {
      duration: 3000 
    });   
  })

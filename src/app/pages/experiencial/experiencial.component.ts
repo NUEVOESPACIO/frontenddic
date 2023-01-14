@@ -140,7 +140,7 @@ this.experiencialService.anadirExperiencial(this.experiencial).subscribe(
    this.router.navigate(["/experiencial"]);        
  },(error)=> {
    console.log(error);
-   this.snack.open("Ha ocurrido un error en el sistema", 'Aceptar', {
+   this.snack.open("Ha ocurrido un error en el sistema. Verifique permisos de usuario", 'Aceptar', {
      duration: 3000 
    });   
  })} else {
@@ -171,6 +171,7 @@ this.experiencialList=data;
 
 // Recorro el Array, y voy agregando lessonForms a Lesssons;
 for(let idd = 0 ; idd < this.experiencialList.length ; idd++){
+  
  
  const lessonForm = this.fb.group({
      nombreEmpresag: [this.experiencialList[idd].nombreEmpresa, [Validators.required]],     
@@ -189,6 +190,7 @@ for(let idd = 0 ; idd < this.experiencialList.length ; idd++){
  
  console.log("thiiiiisssss");
  var ops=this.experiencialList[idd].tipoempleo;
+ this.caracteresenedit[idd]=" ";
 
  
  // Apaga o prende al hacer ciclo dpende de finalizado
@@ -233,13 +235,16 @@ public eliminarexperiencial(idx: number) {
 var idu=this.experiencialList[idx].id;
 console.log(idu);    
 this.experiencialService.eliminarExperiencial(idu).subscribe((data)=>{console.log(data)      
- Swal.fire('Usuario eliminado','Usuario eliminado ok','success');
+ Swal.fire('Experiencia Eliminar','Experiencia Laboral Eliminada','success');
  console.log("deberia estar todo eliminadion coorecdta");       
  this.router.onSameUrlNavigation="reload";
  this.router.navigate(["/experiencial"]);            
 
-},(error)=>{console.log("No se pudo eliminar usuario");
-Swal.fire('No se pudo eliminar Usuario','No se pudo eliminar usuario','success');
+},(error)=>{console.log("No se pudo eliminar experiencial");
+
+this.snack.open("Hay campos inválidos en el formulario. Favor, verificar", 'Aceptar', {
+  duration: 3000 
+});   
 });    
 }
 
@@ -370,14 +375,14 @@ this.experiencialedit.personaid='1';
 this.experiencialService.editarExperiencial(this.experiencialedit).subscribe(
  (data) => {
    console.log(data);
-   Swal.fire('Usuario editado guardado','Usuario editado registrado con exito en el sistema','success');
+   Swal.fire('Experincia Editada correctamente','Experincia Editada correctamente','success');
 
    this.router.onSameUrlNavigation="reload";
    this.router.navigate(["/experiencial"]);
   
  },(error)=> {
    console.log(error);
-   this.snack.open("Ha ocurrido un error en el sistema al querer guardar un usuario editado", 'Aceptar', {
+   this.snack.open("Ha ocurrido un error en el sistema al querer guardar experiencia", 'Aceptar', {
      duration: 3000 
    });   
  })

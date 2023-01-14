@@ -235,20 +235,20 @@ this.personasedit.inforesumida=this.lessons.at(idx).get('inforesumidag')?.value;
 this.personasService.editarPersonas(this.personasedit).subscribe(
  (data) => {
    console.log(data);
-   Swal.fire('Personas editada guardada','Personas editada registrado con exito en el sistema','success');
+   Swal.fire('Personas editada guardada','Registro Persona editado exitosamente','success');
 
    this.router.onSameUrlNavigation="reload";
    this.router.navigate(["/personas"]);
   
  },(error)=> {
    console.log(error);
-   this.snack.open("Ha ocurrido un error en el sistema al querer guardar un proyecto editado", 'Aceptar', {
+   this.snack.open("Ha ocurrido un error en el sistema. Verifique permisos de usuario.", 'Aceptar', {
      duration: 3000 
    });   
  })
 } 
 else {
-this.snack.open("Favor, verificar posibles errores en los datos", 'Aceptar', {
+this.snack.open("Favor, verificar posibles errores y/o campos faltantes", 'Aceptar', {
 duration: 3000 
 });   
 }  

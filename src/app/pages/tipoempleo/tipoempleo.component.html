@@ -1,84 +1,96 @@
-<p>tipoempleo works!</p>
-
-
- 
 <div class="container">
-    <div>
-        <div>  
+    <div class="d-flex justify-content-center">
+        <div class="col-md-offset-1 col-md-10 col-md-pull-1">
             <form [formGroup]="formularioEdicion">
-                <div [formGroup]="form">
+                <div class="add-lessons-form" [formGroup]="form">
                     <ng-container formArrayName="lessons">
                         <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">
-                            <br><p><b>Registro No: {{i}}</b></p>
-                            <br><p><b>Registro No: {{tipoempleoList[i].id}}</b></p>
-                            <div [formGroupName]="i">
-                                <!--<div class="lesson-form-row" [formGroup]="lessonForm"></div>-->
-                                <table style="border: 1px solid black;" style="width:100%;"><tr>
-                                <td style="width:30%;"><label>Tipo De Empleo</label></td>
-                                <td><mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="tipoempleog"
-                                        placeholder="{{tipoempleoList[i].tipoEmpleo}}">
-                                </mat-form-field>
-                                <p class="notita" 
+                            <hr class="sepa">
+                            <b>Lista No: {{i+1}}</b> | Id en Tabla: {{tipoempleoList[i].id}}
+                            <hr>
+                            <div class="lesson-form-row" [formGroupName]="i">
+                                <div class="box">
+                                    <div class="one">
+                                        <p class="ppinterno">Nombre Descriptivo:</p>
+                                    </div>
+                                    <div class="two">
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <input matInput formControlName="tipoempleog"
+                                                placeholder="{{tipoempleoList[i].tipoEmpleo}}">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <p class="notita"
                                     *ngIf="this.lessons.at(i).get('tipoempleog')?.errors?.['required']; else nadae">
-                                    (Nombre del tipo empleo no debe ser nulo)
-                                </p></td></tr>
+                                    (Tipo empleo no debe ser nulo)
+                                </p>
                                 <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>                
+                                    <p class="notita">&nbsp;</p>
+                                </ng-template>
 
-                                
-                                
-                            <tr><td><mat-icon class="edit-btn" style="width:'30px'; height:'30px'" (click)="editartipoempleo(i);">
-                            edit</mat-icon><p>Editar</p></td>       
-                            <td><mat-icon class="delete-btn" style="width:'30px'; height:'30px'" (click)="eliminartipoempleo(i);">
-                            delete_forever</mat-icon><p>Eliminar</p></td></tr></table>
+
+
+
+                                <hr>
+                                <button type="button" class="btn btn-outline-dark" (click)="editartipoempleo(i);"><img
+                                        src="../../../assets/add.JPG" width="30"
+                                        height="30">Editar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <button type="button" class="btn btn-outline-dark" (click)="eliminartipoempleo(i);"><img
+                                        src="../../../assets/eliminar.JPG" width="30" height="30">Eliminar</button>
+
+                                <hr>
+
                             </div>
-                       </ng-container>    
-                    </ng-container>    
-                </div>        
+                        </ng-container>
+                    </ng-container>
+                </div>
             </form>
         </div>
-    </div>      
-</div>    
+    </div>
+</div>
 
 
 
 
 
-<div class="bootstrap-wrapper">
-    <div class="container">
-        <div class="row" style="margin-top:20px;">
-            <div class="col-md-6 offset-md-3">
-                <div class="container text-center">
-                    <img src="../../../assets/2583145.png" width="60" height="60">
-                </div>
-                <h1 class="text-center">Incoporar un nuevo tipo de empleo</h1>           
-                <form [formGroup]="formularioAlta" (ngSubmit)="formSubmit()">
-                    
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Tipo de Empleo</mat-label>
-                        <input type="text" required formControlName="tipoempleo" matInput placeholder="Escriba nombre del tipo de empleo">                        
-                    </mat-form-field>
-                    <p class="notita" 
-                        *ngIf="this.formularioAlta.get('tipoempleo')?.errors?.['required']; else nada">
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-offset-1 col-md-10 col-md-pull-1">
+            <form [formGroup]="formularioAlta" (ngSubmit)="formSubmit()">
+                <hr class="sepan">
+                <img src="../../../assets/add.JPG" width="40" height="40"><b>Agregar Nuevo Tipo de Empleo</b>
+
+                <hr>
+                <div class="lesson-form-row">
+                    <div class="box">
+                        <div class="one">
+                            <p class="ppinterno">Nombre Descriptivo:</p>
+                        </div>
+                        <div class="two">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Nombre Descriptivo</mat-label>
+                                <input type="text" required formControlName="tipoempleo" matInput
+                                    placeholder="Escriba nombre del tipo de empleo">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <p class="notita" *ngIf="this.formularioAlta.get('tipoempleo')?.errors?.['required']; else nadae">
                         (Nombre del tipo de empleo no debe ser nulo)
                     </p>
-                    <ng-template #nada>
-                        <p class="notita4">&nbsp;</p>
+                    <ng-template #nadae>
+                        <p class="notita">&nbsp;</p>
                     </ng-template>
-                    
-                                  
 
-                    
                     <div class="container text-center">
-                        <button mat-raised-button color="primary">Registrar</button>
-                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="accent" (click)="limpiar();">Limpiar</button>
+                        <button mat-raised-button color="white"><img src="../../../assets/add.JPG" width="30"
+                                height="30">Agregar</button>
+                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="white"
+                            (click)="limpiar();"><img src="../../../assets/clean.JPG" width="30"
+                                height="30">Limpiar</button>
                     </div>
-                </form>
-                <br><br><br>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -1,175 +1,226 @@
-<p>personas works okkk !</p>
-
-
 <div class="container">
-    <div class="row" style="margin-top:20px;">
-        <div class="col-md-6 offset-md-3">  
+    <div class="d-flex justify-content-center">
+        <div class="col-md-offset-1 col-md-10 col-md-pull-1">
             <form [formGroup]="formularioEdicion">
                 <div class="add-lessons-form" [formGroup]="form">
                     <ng-container formArrayName="lessons">
-                        <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">                            
-                            <div class="lesson-form-row" [formGroupName]="i">                                
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="nombreg"
-                                        placeholder="{{personasList[i].nombre}}">
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('nombreg')?.errors?.['required']; else nadae">
-                                    (Nombre de la Personas no debe ser nula)
-                                </p>
-                                <ng-template #nadae>
-                                <p class="notita">&nbsp;</p>
-                                </ng-template>  
-                                <ng-template #nada>
-                                    <p class="notita4">&nbsp;</p>
-                                </ng-template>
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="apellidog"
-                                        placeholder="{{personasList[i].apellido}}">
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('apellidog')?.errors?.['required']; else nadae">
-                                    (Apellido de la Perona no debe ser nulo)
-                                </p>
-                                <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>                
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="domiciliog"
-                                        placeholder="{{personasList[i].domicilio}}">
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('domiciliog')?.errors?.['required']; else nadae">
-                                    (Domicilio de la Perona no debe ser nulo)
-                                </p>
-                                <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>                
+                        <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">
+                            <div *ngIf="i==0">
 
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input onkeydown="return false" matInput 
-                                        formControlName="fechanacg" [placeholder]="placehold(1,i)" [matDatepicker]="picker5" >
-                                    <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker5></mat-datepicker>  
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('fechanacg')?.errors?.['required']; else nada">
-                                    (Debe seleccionar fecha de nacimiento)
-                                </p>  
-                                
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="telefonog"
-                                        placeholder="{{personasList[i].telefono}}">
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('telefonog')?.errors?.['required']; else nadae">
-                                    (El telefono no debe ser nulo)
-                                </p>
-                                <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>                
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="emailg"
-                                        placeholder="{{personasList[i].email}}">
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('emailg')?.errors?.['required']; else nadae">
-                                    (El emil no debe ser nulo)
-                                </p>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('emailg')?.errors?.['email']; else nadae">
-                                    (No tiene formato de Email, favor verificar)
-                                </p>
-                                <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>                
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="sobremig"
-                                        placeholder="{{personasList[i].sobremi}}">
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('sobremig')?.errors?.['required']; else nadae">
-                                    (Debe expresar algo sobr Ud)
-                                </p>
-                                <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>                
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="urlfotog"
-                                        placeholder="{{personasList[i].urlfoto}}">
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('urlfotog')?.errors?.['required']; else nadae">
-                                    (Debe indicar URL de Foto)
-                                </p>
-                                <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>       
-                                
-                                <mat-form-field class="full-width" appearance="outline">
-                                    <input matInput
-                                        formControlName="titulog"
-                                        placeholder="{{personasList[i].titulo}}">
-                                </mat-form-field>
-                                <p class="notita" 
-                                    *ngIf="this.lessons.at(i).get('titulog')?.errors?.['required']; else nadae">
-                                    (El titulo no debe ser nulo)
-                                </p>
-                                <ng-template #nadae>
-                                <p class="notita4">&nbsp;</p>
-                                </ng-template>    
+                                <div class="lesson-form-row" [formGroupName]="i">
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Nombre:</p>
+                                        </div>
+                                        <div class="two">
+                                            <mat-form-field class="full-width" appearance="outline">
+                                                <input matInput formControlName="nombreg"
+                                                    placeholder="{{personasList[i].nombre}}">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('nombreg')?.errors?.['required']; else nadae">
+                                        Nombre
+                                        no puede ser nulo</p>
+                                    <ng-template #nadae>
+                                        <p class="notita">&nbsp;</p>
+                                    </ng-template>
 
 
-                                
-                            <mat-form-field class="full-width" appearance="outline">
-                                <textarea cols="35" rows="4"  matInput
-                                formControlName="inforesumidag"    
-                                    placeholder="{{personasList[i].inforesumida}}" (ngModelChange)="contarcaracteresedit(i)"></textarea>
-                            </mat-form-field>
-                            <p class="notita3" 
-                            *ngIf="this.lessons.at(i).get('inforesumidag')?.errors?.['required']; else nadan">
-                            (Informacion resumida no puede estar vacio)
-                            </p>
-                            <p class="notita4" 
-                                *ngIf="this.lessons.at(i).get('inforesumidag')?.errors?.['maxlength']; else nada">
-                                (La cantidad de caracteres no puede superar los 200)
-                            </p>
-                            <ng-template #nadan>
-                                <p class="notita3">{{caracteresenedit[i]}}</p>
-                            </ng-template>
-
-  
 
 
-                            <br><br><mat-icon class="edit-btn" style="width:'30px'; height:'30px'" (click)="editarproyecto(i);">
-                            edit</mat-icon><p>Editar</p>       
-                
+
+
+                                    <ng-template #nada>
+                                        <p class="notita4">&nbsp;</p>
+                                    </ng-template>
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Apellido:</p>
+                                        </div>
+                                        <div class="two">
+                                            <mat-form-field class="full-width" appearance="outline">
+                                                <input matInput style="margin-top:0px;" formControlName="apellidog"
+                                                    placeholder="{{personasList[i].apellido}}">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('apellidog')?.errors?.['required']; else nadae">
+                                        (Apellido no puede ser nulo)
+                                    </p>
+
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Domicilio:</p>
+                                        </div>
+                                        <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                                <input matInput formControlName="domiciliog"
+                                                    placeholder="{{personasList[i].domicilio}}">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('domiciliog')?.errors?.['required']; else nadae">
+                                        (Domicilio no debe ser nulo)
+                                    </p>
+
+
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Fecha de Nacimiento:</p>
+                                        </div>
+                                        <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                                <input onkeydown="return false" matInput formControlName="fechanacg"
+                                                    [placeholder]="placehold(1,i)" [matDatepicker]="picker5">
+                                                <mat-datepicker-toggle matSuffix
+                                                    [for]="picker5"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker5></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('fechanacg')?.errors?.['required']; else nada">
+                                        Debe seleccionar fecha de nacimiento
+                                    </p>
+
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Telefono:</p>
+                                        </div>
+                                        <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                                <input matInput formControlName="telefonog"
+                                                    placeholder="{{personasList[i].telefono}}">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('telefonog')?.errors?.['required']; else nadae">
+                                        (El teléfono no debe ser nulo)
+                                    </p>
+                                    <ng-template #nadae>
+                                        <p class="notita4">&nbsp;</p>
+                                    </ng-template>
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Email:</p>
+                                        </div>
+                                        <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                                <input matInput formControlName="emailg"
+                                                    placeholder="{{personasList[i].email}}">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('emailg')?.errors?.['required']; else nadae">
+                                        (El emil no debe ser nulo)
+                                    </p>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('emailg')?.errors?.['email']; else nadae">
+                                        (No tiene formato de Email, favor verificar)
+                                    </p>
+                                    <ng-template #nadae>
+                                        <p class="notita">&nbsp;</p>
+                                    </ng-template>
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Comentario Personal:</p>
+                                        </div>
+                                        <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                                <input matInput formControlName="sobremig"
+                                                    placeholder="{{personasList[i].sobremi}}">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('sobremig')?.errors?.['required']; else nadae">
+                                        (Debe expresar algo sobr Ud)
+                                    </p>
+                                    <ng-template #nadae>
+                                        <p class="notita4">&nbsp;</p>
+                                    </ng-template>
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Link a Foto</p>
+                                        </div>
+                                        <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                                <input matInput formControlName="urlfotog"
+                                                    placeholder="{{personasList[i].urlfoto}}">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('urlfotog')?.errors?.['required']; else nadae">
+                                        (Debe indicar URL de Foto)
+                                    </p>
+                                    <ng-template #nadae>
+                                        <p class="notita">&nbsp;</p>
+                                    </ng-template>
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinterno">Titulo:</p>
+                                        </div>
+                                        <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                                <input matInput formControlName="titulog"
+                                                    placeholder="{{personasList[i].titulo}}">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('titulog')?.errors?.['required']; else nadae">
+                                        (El titulo no debe ser nulo)
+                                    </p>
+                                    <ng-template #nadae>
+                                        <p class="notita4">&nbsp;</p>
+                                    </ng-template>
+
+
+
+                                    <div class="box">
+                                        <div class="one">
+                                            <p class="ppinternos">Informacion resumida</p>
+                                        </div>
+                                        <div class="two"><mat-form-field class="full-width" appearance="outline">
+                                                <textarea cols="55" rows="14" matInput formControlName="inforesumidag"
+                                                    placeholder="{{personasList[i].inforesumida}}"
+                                                    (ngModelChange)="contarcaracteresedit(i)"></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('inforesumidag')?.errors?.['required']; else nadae">
+                                        (Informacion resumida no puede estar vacio)
+                                    </p>
+                                    <p class="notita"
+                                        *ngIf="this.lessons.at(i).get('inforesumidag')?.errors?.['maxlength']; else nadae">
+                                        (La cantidad de caracteres no puede superar los 200)
+                                    </p>
+                                    <ng-template #nadan>
+                                        <p class="notita3">{{caracteresenedit[i]}}</p>
+                                    </ng-template>
+
+                                    <hr>
+                                    <button type="button" class="btn btn-outline-dark"
+                                        (click)="editarproyecto(i);">Editar</button>
+                                    <hr>
+
+
+                                </div>
                             </div>
-                       </ng-container>    
-                    </ng-container>    
-                </div>        
+
+                        </ng-container>
+                    </ng-container>
+                </div>
             </form>
         </div>
-    </div>      
-</div>    
-
-
-
-
-
-
+    </div>
+</div>

@@ -24,8 +24,8 @@ export class Dashboard1Component {
   altus=(this.altref-100).toString();
   //codelink:any= ["sobremi","educacion","experiencia","skills","proyectos","tipodeempleo"];
 
-  varia=[TipoEmpleoComponent,SkillsComponent];
-  cols=[3,3];
+  varia=[TipoEmpleoComponent];
+  cols=[3];
   
 
 
@@ -35,13 +35,12 @@ export class Dashboard1Component {
       if (matches) {
         return [
           { title: 'ABM Tabla Tipos_de_Empleos', cols: 3, rows: 1 },
-          { title: 'ABM Tabla Skills', cols: 3, rows: 1 }
+          
         ];
       }
 
       return [
-        { title: 'ABM Tabla Tipos_de_Empleos', cols: 3, rows: 1 },
-        { title: 'ABM Skills', cols: 3, rows: 1 }
+        { title: 'ABM Tabla Tipos_de_Empleos', cols: 3, rows: 1 },        
       ];
     })
   );
@@ -67,15 +66,15 @@ export class Dashboard1Component {
     this.altref=2000;
     this.altur=this.altref.toString()+"px";
     this.altus=(this.altref-100).toString();    
-    if (ca===1) {this.cols[0]=2;this.cols[1]=4} else {this.cols[0]=4;this.cols[1]=2};
+    
   };
   contraerm(ca: number) {
     this.altref=100;
     this.altur=this.altref.toString()+"px";
-    this.altus=(this.altref-100).toString(); 
-    this.cols[0]=3;
-    this.cols[1]=3; 
-   
+    this.altus=(this.altref-100).toString();  
+    
+    
+    
 
   };
 

@@ -137,12 +137,12 @@ public formularioEdicion= new FormGroup({});
     this.educacionService.anadirEducacion(this.educacion).subscribe(
       (data) => {
         console.log(data);
-        Swal.fire('Usuario guardado','Usuario registrado con exito en el sistema','success');
+        Swal.fire('Item de Educacion guardado','Educacion registrado con exito en el sistema','success');
         this.router.onSameUrlNavigation="reload";
         this.router.navigate(["/educacion"]);        
       },(error)=> {
         console.log(error);
-        this.snack.open("Ha ocurrido un error en el sistema", 'Aceptar', {
+        this.snack.open("Ha ocurrido un error en el sistema. Verifique permisos", 'Aceptar', {
           duration: 3000 
         });   
       })} else {
@@ -213,13 +213,15 @@ public formularioEdicion= new FormGroup({});
     var idu=this.educacionList[idx].id;
     console.log(idu);    
     this.educacionService.eliminareducacion(idu).subscribe((data)=>{console.log(data)      
-      Swal.fire('Usuario eliminado','Usuario eliminado ok','success');
+      Swal.fire('Item de Educacion eliminada','Educacion eliminado ok','success');
       console.log("deberia estar todo eliminadion coorecdta");       
       this.router.onSameUrlNavigation="reload";
       this.router.navigate(["/educacion"]);            
     
     },(error)=>{console.log("No se pudo eliminar usuario");
-    Swal.fire('No se pudo eliminar Usuario','No se pudo eliminar usuario','success');
+    this.snack.open("Ha ocurrido un error en el sistema al querer eliminar un item de educacion. Verifique permisos", 'Aceptar', {
+      duration: 3000 
+    });   
   });    
   }
 
@@ -302,6 +304,8 @@ public formularioEdicion= new FormGroup({});
     
     // la forma que encontre de que realice validaciones al editar entidad.-
     if (
+
+      !this.lessons.at(idx).get('comentariog')?.errors?.['maxlength'] && 
       typeof this.lessons.at(idx).get('titulo_obtenidog')?.errors?.['required']==='undefined' &&
       typeof this.lessons.at(idx).get('instituciong')?.errors?.['required']==='undefined' &&
       typeof this.lessons.at(idx).get('ubicaciong')?.errors?.['required']==='undefined' &&
@@ -342,14 +346,14 @@ public formularioEdicion= new FormGroup({});
     this.educacionService.editarEducacion(this.educacionedit).subscribe(
       (data) => {
         console.log(data);
-        Swal.fire('Usuario editado guardado','Usuario editado registrado con exito en el sistema','success');
+        Swal.fire('Regitro de Educacion editado guardado','Educcion editado registrado con exito en el sistema','success');
 
         this.router.onSameUrlNavigation="reload";
         this.router.navigate(["/educacion"]);
        
       },(error)=> {
         console.log(error);
-        this.snack.open("Ha ocurrido un error en el sistema al querer guardar un usuario editado", 'Aceptar', {
+        this.snack.open("Ha ocurrido un error en el sistema al querer guardar un item de educacion. Verifique permisos", 'Aceptar', {
           duration: 3000 
         });   
       })

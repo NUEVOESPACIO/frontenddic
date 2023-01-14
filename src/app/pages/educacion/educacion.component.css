@@ -1,38 +1,157 @@
-.notita {
-    font-size:small;
-    margin: 0px,0px,0px,50px;
-    padding: 0px;
+.containter {
+    text-align:center;
     
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
 }
 
-.notitac {
-    font-size:small;
-    margin: 0px,0px,0px,0px;
-    padding-top: 13px;
-    
+.example-full-width {
+    width: 100%;
 }
 
-.notitaf {
-    font-size:small;
-    margin: 0px,0px,0px,0px;
-    padding-top: 2px;
-    padding-left: 95px;
-    
-}
-.notita3 {
-    font-size:small;
-    margin: 0px,0px,0px,0px;
-    padding-top: 12px;
-    padding-left: 0px;
+::ng-deep .mat-form-field .mat-input-element {
+    color: slategray;
     padding-bottom: 0px;
+}
+
+::ng-deep .mat-form-field .mat-form-field-label {
+    color: slategray !important;
+}
+
+::ng-deep .mat-form-field .mat-form-field-underline {
+    background-color: slategray;
+}
+
+::ng-deep .mat-form-field .mat-form-field-ripple {
+    background-color: slategray;
+}
+
+::ng-deep .mat-form-field .mat-form-field-required-marker {
+    color: slategray;
+}
+
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #ff884d !important;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #ff884d;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-required-marker {
+    color: #ff884d;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-input-element {
+    color: #ff884d;
+}
+
+
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-input-element {
+    color: #ff33cc;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: #ff33cc !important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
+    color: #ff33cc;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: #ff33cc;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;    
+    flex-flow: row wrap;
     
+    width: 550px;
+}
+
+.box1 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.one {
+    flex: 1 1 250px;
+}
+
+
+.two {
+    flex: 4 4 250px;
+    text-align: left;
+}
+
+
+
+.tree {
+    flex: 1 1 750px;
+}
+
+.notita {
+    padding-top: 0px;
+    padding-left:90px;
+    padding-bottom: 0px;
+    margin-top: -20px;
+    margin-bottom: 15px;
+    margin-left: 170px;
+    font-size:11px;
+    text-align: left;
+
 }
 
 .notita4 {
-    font-size:small;
-    margin: 0px,0px,0px,0px;
     padding-top: 0px;
-    padding-left: 0px;
     padding-bottom: 0px;
-    
+    margin-left: 0px;
+    font-size:11px;
+
 }
+
+.full-width {
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+
+.ppinterno {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    font-size:18px;
+    text-align: right;
+}
+
+.ppinternof {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    font-size:18px;
+    text-align: right;
+}
+
+.ppinternos {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    font-size:18px;
+    text-align: right;
+}
+
+.sepa {border: 8px solid rgb(16, 17, 16);
+border-radius: 5px;}
+
+.sepan {border: 10px solid rgb(13, 82, 13);
+    border-radius: 5px;}
+

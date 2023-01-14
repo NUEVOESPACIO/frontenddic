@@ -1,27 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent {
-  //que: Number=0;
-  isLoggedIn = false;
-  showlog=false;
-  // True seria que estoy logeado como editor
+export class NavigationComponent implements OnInit {
 
-  //el otro mod es edicion
-
-  //quef(wh: Number) {
-  //  this.que=wh;
-  //  console.log("Desde quef:")
-  //  console.log(this.que);
-  //}
+  fasel = "inicio";
+  fases = "inicio";
+  fasem = "inicio";
+  nuser!: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -29,18 +23,56 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
-  
-  alter() {
-    if (this.isLoggedIn===true) {this.isLoggedIn=false} else {
-      this.showlog=true;
-      //this.isLoggedIn=true
-      
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private tokenService: TokenService) { }
+
+  ngOnInit() {
+
+    console.log("MUESTRA AUTORIDADES AL INICIO");
+
+    this.nuser = this.tokenService.getUserName();
+    console.log(this.nuser);
+
+    if (this.nuser == null) {
+      console.log("esta vacio");
+      this.fasel = "inicio";
+      this.fases = "nologeado";
+      this.fasem = "inicio";
     };
-    this.router.onSameUrlNavigation="reload";
-    console.log(this.isLoggedIn);
-    this.router.navigate(["/navigation"]);
-   
+    if (this.nuser == 'user') {
+      console.log("es usuario USER");
+      this.fasel = "logedasuser";
+      this.fases = "logeado";
+      this.fasem = "logedasuser";
+
+    };
+    if (this.nuser == 'admin') {
+      console.log("esta vacio");
+      this.fasel = "logedasadmin";
+      this.fases = "logeado";
+      this.fasem = "logedasadmin";
+
+    };
+
+
+  }
+
+  login(): void {
+    this.fasem = "showloginform";
+    this.fases = "porlogearse";
+
+  }
+
+  getback(): void {
+
+    this.fasem = "inicio";
+    this.fases = "nologeado";
+    this.fasel = "inicio";
+
+  }
+
+  onLogOut(): void {
+    this.tokenService.logOut();
+    window.location.reload();
 
   }
 

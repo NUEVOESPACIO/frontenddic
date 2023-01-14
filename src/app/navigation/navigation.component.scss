@@ -4,6 +4,7 @@
 
 .sidenav {
   width: 200px;
+  background-color: rgb(241, 229, 243);
 }
 
 .sidenav .mat-toolbar {
@@ -12,8 +13,97 @@
 }
 
 .mat-toolbar.mat-primary {
-  background: blue;
+  background: rgb(111, 111, 153);
   position:sticky;
   top: 0;
   z-index: 1;
+}
+
+.box {
+  display: flex;
+  flex-direction: row-reverse;    
+}
+
+nav ul {
+  display: flex;
+  margin: 0 -10px;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+.push-right {
+  margin-left: auto;
+}
+
+.lateral {
+ 
+}
+
+.fondocentral {
+  background-color: rgb(246, 248, 241);
+}
+
+.upper {
+  background-color: rgb(173, 206, 25);
+}
+
+.aquiflex {
+  
+margin: 30px;
+display:inline-block;
+flex-direction: row;
+border: 1px solid rgb(24, 9, 39);
+border-radius: 1em;    
+align-items:center;   
+border: 1px solid rgb(80, 172, 52);
+border-radius: 1em;
+}
+
+
+.space1 {
+  border: 1px solid rgb(22, 17, 87);
+  border-radius: 1em;
+  flex-grow: 3;
+  flex-basis: 510px; 
+  text-align: center;
+}
+
+
+.space2 {
+  border: 1px solid rgb(4, 3, 63);
+  border-radius: 1em;
+  flex-grow: 5;
+  text-align: center;
+  font-style: normal;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+ 
+}
+
+    
+.date {
+  display: block;
+  float: right;
+}      
+.title .name {
+  float: left;
+}
+
+.bloque1{
+  margin:20px;
+  text-align: center;
+}
+
+.argprog{
+  width: 140px;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.sebas{
+  width: 140px;
+  height: 140px;
+  border-radius: 50px;
 }

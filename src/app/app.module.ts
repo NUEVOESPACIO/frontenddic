@@ -33,6 +33,14 @@ import { TipoEmpleoComponent } from './pages/tipoempleo/tipoempleo.component';
 import { ExperiencialComponent } from './pages/experiencial/experiencial.component';
 import { Dashboard1Component } from './dashboard1/dashboard1.component';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { LoginComponent } from './pages/login/login.component';
+import { interceptorProvider } from './services/interceptor-service';
+import { PortadaInicialComponent } from './pages/portada-inicial/portada-inicial.component';
+import { Dashboard3Component } from './dashboard3/dashboard3.component';
+import { Dashboard4Component } from './dashboard4/dashboard4.component';
+import { Dashboard5Component } from './dashboard5/dashboard5.component';
+import { TodoComponent } from './pages/todo/todo.component';
+
 
 
 
@@ -54,6 +62,13 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
     ExperiencialComponent,
     Dashboard1Component,
     Dashboard2Component,
+    LoginComponent,
+    PortadaInicialComponent,
+    Dashboard3Component,
+    Dashboard4Component,
+    Dashboard5Component,
+    TodoComponent,
+
    
 
   ],
@@ -83,6 +98,7 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
     
   ],
   providers: [
+    interceptorProvider,
 
   ],
   bootstrap: [AppComponent]

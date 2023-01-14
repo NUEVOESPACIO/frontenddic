@@ -1,0 +1,187 @@
+<div class="container">
+    <!-- Sobre mi -->
+
+    <p id="sobremi"></p><br><br>
+    <div class="row">
+        <div class="col-0"><br></div>
+        <div class="col-12">
+            <div class="central">
+                <div class="encabezador">Sobre Mi</div>
+                <div *ngFor="persona of personasList;; let i = index">
+                    <div *ngIf="i==0">
+                        <div class="personaflex">
+                            <div class="personafleximagen"><img class="personaimagen"
+                                    src="../../../assets/{{personasList[i].urlfoto}}"></div>
+                            <div class="personaflextexto">
+                                <div>
+                                    <p class="pert1">Nombre:<span class="pert2"> {{personasList[i].nombre}}</span></p>
+                                </div>
+                                <div>
+                                    <p class="pert1">Apellido:<span class="pert2"> {{personasList[i].apellido}}</span>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="pert1">Domicilio:<span class="pert2"> {{personasList[i].domicilio}}</span>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="pert1">Fecha de Nacimiento:<span class="pert2">
+                                            {{personasList[i].fechanac}}</span></p>
+                                </div>
+                                <div>
+                                    <p class="pert1">Telefono:<span class="pert2"> {{personasList[i].telefono}}</span>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="pert1">Titulo:<span class="pert2"> {{personasList[i].titulo}}</span></p>
+                                </div>
+                                <div>
+                                    <p class="pert1">Telefono:<span class="pert2">
+                                            {{personasList[i].inforesumida}}</span>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-0"><br></div>
+
+    </div>
+
+    <!-- Educacion y Formacion -->
+
+
+    <div class="row">
+        <div class="col-0"><br></div>
+        <div class="col-12">
+            <p id="educacion"></p><br><br>
+            <div class="central">
+                <div class="encabezador">Educacion & Formacion</div>
+                <div *ngFor="educacion of educacionList;; let i = index">
+                    <div class="personaflex">
+                        <div class="personafleximagen"><img class="personaimagen"
+                                src="../../../assets/{{educacionList[i].ubicacion}}"></div>
+                        <div class="personaflextexto">
+                            <div>
+                                <p class="pert1">Institucion:<span class="pert2">
+                                        {{educacionList[i].institucion}}</span></p>
+                            </div>
+                            <div>
+                                <p class="pert1">Titulo Obtenido:<span class="pert2">
+                                        {{educacionList[i].titulo_obtenido}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">Inicio de Estudios:<span class="pert2">
+                                        {{educacionList[i].fechaini}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">Estudio Finalizado:<span class="pert2">
+                                        {{fines[i]}}</span></p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Fin de de Estudios:<span class="pert2">
+                                        {{educacionList[i].fechafin}}</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Comentario:<span class="pert2"> {{educacionList[i].comentario}}</span>
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-0"><br></div>
+
+    </div>
+
+
+
+    <!-- Proyectos -->
+
+
+    <div class="row">
+        <div class="col-0"><br></div>
+        <div class="col-12">
+            <p id="proyectos"></p><br><br>
+            <div class="central">
+                <div class="encabezador">Participaciones en Proyectos</div>
+                <div *ngFor="proyectos of proyectosList;; let i = index">
+                    <div class="personaflex">
+                        <div class="personafleximagen"><img class="personaimagen"
+                                src="../../../assets/{{proyectosList[i].imagen}}"></div>
+                        <div class="personaflextexto">
+                            <div>
+                                <p class="pert1">Nombre del Proyecto:<span class="pert2">
+                                        {{proyectosList[i].nombreProyecto}}</span></p>
+                            </div>
+                            <div>
+                                <p class="pert1">Entorno:<span class="pert2"> {{proyectosList[i].entorno}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">Marco & Contexto:<span class="pert2"> {{proyectosList[i].marco}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">Fecha de Inicio:<span class="pert2">
+                                        {{proyectosList[i].fechaini}}</span></p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Proyecto actual:<span class="pert2"> {{finpro[i]}}</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Fecha de finalización:<span class="pert2">
+                                        {{proyectosList[i].fechafin}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">Enlace o Referencia (si aplica):<span class="pert2" style="cursor: pointer" (click)="opp(i);">{{proyectosList[i].link}}</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Funcion:<span class="pert2">{{proyectosList[i].funcion}}</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Resultado<span class="pert2">{{proyectosList[i].resultado}}</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Aprendisaje:<span
+                                        class="pert2">{{proyectosList[i].aprendisajeObtenido}}</span>
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-0"><br></div>
+
+    </div>
+
+</div>

@@ -1,0 +1,153 @@
+.central {    
+    padding:20px; 
+    margin:40px; 
+    align-content: left;
+    border: 1px solid rgb(39, 39, 37);
+    border-radius: 1em;
+    background-color: rgb(245, 238, 229);
+    
+}
+
+.cred2 {
+    border: 2px solid rgb(4, 3, 63);
+    border-radius: 1em;
+    flex-grow: 4;
+    text-align: center;
+    font-style: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    background-color: darkgrey;
+   
+}
+
+.cred3 {
+    border: 0px solid rgb(22, 17, 87);
+    border-radius: 1em;
+    flex-grow: 1;
+    flex-basis: 60px; 
+    text-align: center;
+}
+
+.pie {
+    margin-top:10px;
+    text-indent: 40px;
+    margin-left: 30px;
+    margin-right: 30px;  
+    text-align:center;      
+}
+
+.encabezador {
+    margin:15px;
+    text-align: left;
+    font-size: 30px;
+}
+
+.personaflex {
+    margin: 30px;
+    display:flex;
+    flex-direction: row;
+    border: 0px solid rgb(24, 9, 39);
+    border-radius: 1em;    
+    align-items:center;    
+}
+
+.personafleximagen {
+    border: 0px solid rgb(22, 17, 87);
+    border-radius: 1em;
+    flex-grow: 0;
+    flex-basis: 210px; 
+    text-align: center;
+}
+
+.seba{ 
+    border-radius: 50%;
+}
+
+
+
+
+.sepa {border: 2px solid rgb(41, 40, 43);width: 95%;margin:auto}
+
+.intro {
+    margin-top:10px;
+    text-indent: 40px;
+    margin-left: 30px;
+    margin-right: 30px;  
+    text-align:justify;  
+    text-justify:inter-character;
+}
+
+.credencial {
+    margin: 30px;
+    display:flex;
+    flex-direction: row;
+    border: 0px solid rgb(24, 9, 39);
+    border-radius: 1em;    
+    align-items:center;    
+}
+
+.cred1 {
+    border: 0px solid rgb(22, 17, 87);
+    border-radius: 1em;
+    flex-grow: 1;
+    flex-basis: 60px; 
+    text-align: center;
+}
+
+
+
+
+
+.pert1 {
+    margin:0px;    
+    margin-left: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color:rgba(28, 28, 75, 0.808)
+    
+    
+}
+.pert2 {
+    margin:0px;    
+    font-size: 16px;
+    font-weight: normal;
+    color:rgb(0, 0, 0)
+}
+
+.personaimagen{
+    width: 500px;
+    height: 300px;
+    border-radius: 20px;
+  }
+
+  .personaflextexto {
+    border: 0px solid rgb(4, 3, 63);
+    border-radius: 1em;
+    flex-grow: 2;
+    text-align: left;
+    font-style: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+   
+  }
+
+  .personaflex {
+    margin: 30px;
+    display:flex;
+    flex-direction: row;
+    border: 0px solid rgb(24, 9, 39);
+    border-radius: 1em;    
+    align-items:center;    
+}
+
+.personafleximagen {
+    border: 0px solid rgb(22, 17, 87);
+    border-radius: 1em;
+    flex-grow: 0;
+    flex-basis: 210px; 
+    text-align: center;
+}
+
+

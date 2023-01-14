@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output,OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EducacionService } from 'src/app/services/educacion.service';
 import  Swal  from 'sweetalert2';
@@ -88,12 +88,12 @@ public formularioEdicion= new FormGroup({});
     this.tipoempleoService.anadirTipoEmpleo(this.tipoempleo).subscribe(
       (data) => {
         console.log(data);
-        Swal.fire('Usuario guardado','Usuario registrado con exito en el sistema','success');
-        this.router.onSameUrlNavigation="reload";
+        Swal.fire('Tipo De Empleo guardado','Tipo de Empleo registrado con exito en el sistema','success');
+        this.router.onSameUrlNavigation="reload";       
         this.router.navigate(["/tipoempleo"]);        
       },(error)=> {
         console.log(error);
-        this.snack.open("Ha ocurrido un error en el sistema", 'Aceptar', {
+        this.snack.open("Ha ocurrido un error en el sistema. Verifique permisos", 'Aceptar', {
           duration: 3000 
         });   
       })} else {
@@ -134,13 +134,17 @@ public formularioEdicion= new FormGroup({});
     var idu=this.tipoempleoList[idx].id;
     console.log(idu);    
     this.tipoempleoService.eliminarTipoEmpleo(idu).subscribe((data)=>{console.log(data)      
-      Swal.fire('Usuario eliminado','Usuario eliminado ok','success');
-      console.log("deberia estar todo eliminadion coorecdta");       
+      Swal.fire('Tipo De Empleo eliminado','Tipo De Empleo eliminado ok','success');
+      console.log("deberia estar todo eliminacion coorrcta"); 
+          
       this.router.onSameUrlNavigation="reload";
-      this.router.navigate(["/tipoempleo"]);            
+      this.router.navigate(["/tipoempleo"]);        
     
     },(error)=>{console.log("No se pudo eliminar usuario");
-    Swal.fire('No se pudo eliminar Usuario','No se pudo eliminar usuario','success');
+    
+    this.snack.open("No se pudo eliminar tipo de empleo. Verificar Permisos", 'Aceptar', {
+      duration: 3000 
+    }); 
   });    
   }
 
@@ -173,14 +177,14 @@ public formularioEdicion= new FormGroup({});
     this.tipoempleoService.editarTipoEmpleo(this.tipoempleoedit).subscribe(
       (data) => {
         console.log(data);
-        Swal.fire('Usuario editado guardado','Usuario editado registrado con exito en el sistema','success');
+        Swal.fire('Tipo De Empleo editado guardado','Tipo de Empleo editado registrado con exito en el sistema','success');
 
         this.router.onSameUrlNavigation="reload";
-        this.router.navigate(["/tipoempleo"]);
+        this.router.navigate(["/dashboard1"]);
        
       },(error)=> {
         console.log(error);
-        this.snack.open("Ha ocurrido un error en el sistema al querer guardar un usuario editado", 'Aceptar', {
+        this.snack.open("Ha ocurrido un error en el sistema al querer guardar un tipo de empleo editado", 'Aceptar', {
           duration: 3000 
         });   
       })
