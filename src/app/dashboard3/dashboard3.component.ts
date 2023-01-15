@@ -3,6 +3,7 @@ import { EducacionComponent } from '../pages/educacion/educacion.component';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { EducacionService } from '../services/educacion.service';
 
 @Component({
   selector: 'app-dashboard3',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard3.component.scss']
 })
 export class Dashboard3Component implements OnInit {
+
+  listag: any=[];
 
 
   altref=100;
@@ -38,7 +41,7 @@ export class Dashboard3Component implements OnInit {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor(private conteo: EducacionService, private breakpointObserver: BreakpointObserver, private router: Router) {
 
   }
 
@@ -56,11 +59,19 @@ export class Dashboard3Component implements OnInit {
 
 
   expandirm(ca: number) {
-    this.altref=2000;
-    this.altur=this.altref.toString()+"px";
-    this.altus=(this.altref-100).toString();    
-    
-  };
+    this.conteo.listarEducacion().subscribe((data)=>{
+      this.listag=data;
+      var nn=this.listag.length;      
+      this.altref=1300*nn+30;
+      this.altur=this.altref.toString()+"px";
+      this.altus=(this.altref-100).toString();
+    }, (error)=>{
+      this.altref=2000;
+      this.altur=this.altref.toString()+"px";
+      this.altus=(this.altref-100).toString();
+    });
+
+  }
   contraerm(ca: number) {
     this.altref=100;
     this.altur=this.altref.toString()+"px";

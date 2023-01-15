@@ -3,6 +3,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SkillsComponent } from '../pages/skills/skills.component';
+import { SkillsService } from '../services/skills.service';
 
 @Component({
   selector: 'app-dashboard4',
@@ -10,6 +11,8 @@ import { SkillsComponent } from '../pages/skills/skills.component';
   styleUrls: ['./dashboard4.component.scss']
 })
 export class Dashboard4Component implements OnInit {
+
+  listag: any=[];
 
   
 
@@ -39,7 +42,7 @@ export class Dashboard4Component implements OnInit {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor(private conteo: SkillsService, private breakpointObserver: BreakpointObserver, private router: Router) {
 
   }
 
@@ -55,13 +58,21 @@ export class Dashboard4Component implements OnInit {
   
 
 
-
   expandirm(ca: number) {
-    this.altref=2000;
-    this.altur=this.altref.toString()+"px";
-    this.altus=(this.altref-100).toString();    
-    
-  };
+    this.conteo.listarSkills().subscribe((data)=>{
+      this.listag=data;
+      var nn=this.listag.length;      
+      this.altref=850*nn+30;
+      this.altur=this.altref.toString()+"px";
+      this.altus=(this.altref-100).toString();
+    }, (error)=>{
+      this.altref=2000;
+      this.altur=this.altref.toString()+"px";
+      this.altus=(this.altref-100).toString();
+    });
+
+  }
+
   contraerm(ca: number) {
     this.altref=100;
     this.altur=this.altref.toString()+"px";

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginUsuario } from 'src/app/model/login-usuario';
 import { AuthService } from 'src/app/services/auth.service';
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
     token: ''
   };
 
-  constructor(private tokenService: TokenService, private authService: AuthService, private router: Router) { }
+  constructor(private tokenService: TokenService, private authService: AuthService, private router: Router, private snack:MatSnackBar) { }
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -57,10 +58,14 @@ export class LoginComponent implements OnInit {
       console.log(data.authorities);
     }, err => {
 
-      this.isLogged = false;
-      this.isLogged = true;
-      this.errMsj = err.error.mensaje;
-      console.log(this.errMsj);
+      //this.isLogged = false;
+      //this.isLogged = true;
+      //this.errMsj = err.error.mensaje;
+      //console.log(this.errMsj);
+
+      this.snack.open("Error en el usuario y/o contraseña. No se pudo logear", 'Aceptar', {
+        duration: 3000 
+      });   
 
 
 

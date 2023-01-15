@@ -10,6 +10,7 @@ import { EducacionComponent } from '../pages/educacion/educacion.component';
 import { ExperiencialComponent } from '../pages/experiencial/experiencial.component';
 import { ProyectosComponent } from '../pages/proyectos/proyectos.component';
 import { Router } from '@angular/router';
+import { TipoEmpleoService } from '../services/tipoempleo.service';
 
 @Component({
   selector: 'app-dashboard1',
@@ -17,6 +18,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard1.component.scss']
 })
 export class Dashboard1Component {
+
+  listag: any=[];
 
 
   altref=100;
@@ -45,7 +48,7 @@ export class Dashboard1Component {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor(private conteo: TipoEmpleoService, private breakpointObserver: BreakpointObserver, private router: Router) {
 
   }
 
@@ -63,9 +66,19 @@ export class Dashboard1Component {
 
 
   expandirm(ca: number) {
-    this.altref=2000;
-    this.altur=this.altref.toString()+"px";
-    this.altus=(this.altref-100).toString();    
+    this.conteo.listarTipoEmpleo().subscribe((data)=>{
+      this.listag=data;
+      var nn=this.listag.length;      
+      this.altref=353*nn+30;
+      this.altur=this.altref.toString()+"px";
+      this.altus=(this.altref-100).toString();
+    }, (error)=>{
+      this.altref=2000;
+      this.altur=this.altref.toString()+"px";
+      this.altus=(this.altref-100).toString();
+    });
+
+      
     
   };
   contraerm(ca: number) {

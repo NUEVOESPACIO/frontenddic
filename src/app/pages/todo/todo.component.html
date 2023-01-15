@@ -10,33 +10,33 @@
                 <div *ngFor="persona of personasList;; let i = index">
                     <div *ngIf="i==0">
                         <div class="personaflex">
-                            <div class="personafleximagen"><img class="personaimagen"
+                            <div class="personafleximagen2"><img class="personaimagen2"
                                     src="../../../assets/{{personasList[i].urlfoto}}"></div>
-                            <div class="personaflextexto">
+                            <div class="personaflextexto2">
                                 <div>
-                                    <p class="pert1">Nombre:<span class="pert2"> {{personasList[i].nombre}}</span></p>
+                                    <p class="pert12">Nombre:<span class="pert22"> {{personasList[i].nombre}}</span></p>
                                 </div>
                                 <div>
-                                    <p class="pert1">Apellido:<span class="pert2"> {{personasList[i].apellido}}</span>
+                                    <p class="pert12">Apellido:<span class="pert22"> {{personasList[i].apellido}}</span>
                                     </p>
                                 </div>
                                 <div>
-                                    <p class="pert1">Domicilio:<span class="pert2"> {{personasList[i].domicilio}}</span>
+                                    <p class="pert12">Domicilio:<span class="pert22"> {{personasList[i].domicilio}}</span>
                                     </p>
                                 </div>
                                 <div>
-                                    <p class="pert1">Fecha de Nacimiento:<span class="pert2">
+                                    <p class="pert12">Fecha de Nacimiento:<span class="pert22">
                                             {{personasList[i].fechanac}}</span></p>
                                 </div>
                                 <div>
-                                    <p class="pert1">Telefono:<span class="pert2"> {{personasList[i].telefono}}</span>
+                                    <p class="pert12">Telefono:<span class="pert22"> {{personasList[i].telefono}}</span>
                                     </p>
                                 </div>
                                 <div>
-                                    <p class="pert1">Titulo:<span class="pert2"> {{personasList[i].titulo}}</span></p>
+                                    <p class="pert12">Titulo:<span class="pert22"> {{personasList[i].titulo}}</span></p>
                                 </div>
                                 <div>
-                                    <p class="pert1">Telefono:<span class="pert2">
+                                    <p class="pert12">Resumen:<span class="pert2">
                                             {{personasList[i].inforesumida}}</span>
                                     </p>
                                 </div>
@@ -183,5 +183,213 @@
         <div class="col-0"><br></div>
 
     </div>
+
+       <!-- Experiencia -->
+
+    <div class="row">
+        <div class="col-0"><br></div>
+        <div class="col-12">
+            <p id="experiencia"></p><br><br>
+            <div class="central">
+                <div class="encabezador">Experiencia Laboral</div>
+                <div *ngFor="experiencia of experiencialList;; let i = index">
+                    <div class="personaflex">
+                        <div class="personafleximagenl"><img class="personaimagenl"
+                                src="../../../assets/{{experiencialList[i].nombreEmpresa | lowercase}}.JPG"></div>
+                        <div class="personaflextexto">
+                            <div>
+                                <p class="pert1">Nombre de la Empresa:<span class="pert2">
+                                        {{experiencialList[i].nombreEmpresa}}</span></p>
+                            </div>
+                            <div>
+                                <p class="pert1">Fecha inicio Puesto / Relacion Laboral:<span class="pert2"> {{experiencialList[i].fechaini}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">¿Es trabajo, puesto actual?<span class="pert2"> {{estra[i]}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">Fecha finalizacion puesto / Relacion Laboral<span class="pert2">
+                                        {{experiencialList[i].fechafin}}</span></p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Descripcion:<span class="pert2"> {{experiencialList[i].descripcion}}</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Tipo de Relacion Laboral:<span class="pert2">
+                                        {{cate[i]}}</span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-0"><br></div>
+
+
+   <!-- Skills -->
+        
+    <div class="row">
+        <div class="col-0"><br></div>
+        <div class="col-12">
+            <p id="skills"></p><br><br>
+            <div class="central">
+                <div class="encabezador">Skills & Habilidades</div>
+                <div *ngFor="skill of skillList; let i = index">
+                    <div class="personaflex">
+                        <div class="personafleximagenl">  
+                            
+                            <br></div>
+                        <div class="personaflextexto">
+                            <div>
+                                <p class="pert1">Skill:<span class="pert2">
+                                        {{skillList[i].nombreskill}}</span></p>
+                            </div>
+                            <div>
+                                <p class="pert1">Clasificacion:<span class="pert2"> {{nomskill[i]}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">Descripcion<span class="pert2"> {{skillList[i].descripcion}}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="pert1">Valor Maximo<span class="pert2">
+                                        {{skillList[i].valmax}}</span></p>
+                            </div>
+
+                            <div>
+                                <p class="pert1">Valor Vigente:<span class="pert2"> {{skillList[i].valor}}</span>
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-0"><br></div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>

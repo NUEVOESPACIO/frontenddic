@@ -80,10 +80,13 @@ export class DashboardComponent {
   contraerm(ca: number) {
     this.altref=100;
     this.altur=this.altref.toString()+"px";
-    this.altus=(this.altref-100).toString(); 
-    
+    this.altus=(this.altref-100).toString();    
    
 
   };
+
+  refrescar() {
+    window.location.reload();
+  }
 
 }

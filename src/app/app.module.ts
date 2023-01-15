@@ -22,7 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker'
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, ThemePalette } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { SkillsComponent } from './pages/skills/skills.component';
@@ -40,6 +40,12 @@ import { Dashboard3Component } from './dashboard3/dashboard3.component';
 import { Dashboard4Component } from './dashboard4/dashboard4.component';
 import { Dashboard5Component } from './dashboard5/dashboard5.component';
 import { TodoComponent } from './pages/todo/todo.component';
+
+
+
+
+
+
 
 
 
@@ -71,6 +77,8 @@ import { TodoComponent } from './pages/todo/todo.component';
 
    
 
+   
+
   ],
   imports: [
     BrowserModule,
@@ -94,6 +102,8 @@ import { TodoComponent } from './pages/todo/todo.component';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatSelectModule, 
+
+  
    
     
   ],

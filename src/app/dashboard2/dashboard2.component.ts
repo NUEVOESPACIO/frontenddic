@@ -20,6 +20,8 @@ import { ExperiencialService } from '../services/experiencial.service';
 })
 export class Dashboard2Component {
 
+  listag: any=[];
+
   altref=100;
   altur=this.altref.toString()+"px";
   altus=(this.altref-100).toString();
@@ -47,23 +49,27 @@ export class Dashboard2Component {
     })
   );
 
-  constructor(private experiencialservice: ExperiencialService, private breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor(private conteo: ExperiencialService, private experiencialservice: ExperiencialService, private breakpointObserver: BreakpointObserver, private router: Router) {
 
   }
 
    
 
   expandirm(ca: number) {
+    this.conteo.listarExperiencial().subscribe((data)=>{
+      this.listag=data;
+      var nn=this.listag.length;      
+      this.altref=1190*nn+30;
+      this.altur=this.altref.toString()+"px";
+      this.altus=(this.altref-100).toString();
+    }, (error)=>{
+      this.altref=2000;
+      this.altur=this.altref.toString()+"px";
+      this.altus=(this.altref-100).toString();
+    });
 
-    this.experiencialservice.listarExperiencial().subscribe((data)=>{console.log(data);
-      this.experiencialList=data}, (error)=>{console.log("error el calcular alutra")});
+  }
 
-
-    this.altref=2000;
-    this.altur=this.altref.toString()+"px";
-    this.altus=(this.altref-100).toString();    
-    
-  };
   contraerm(ca: number) {
     this.altref=100;
     this.altur=this.altref.toString()+"px";
@@ -72,14 +78,7 @@ export class Dashboard2Component {
    
 
   };
-  alturaexperiencial() {
-  this.experiencialservice.listarExperiencial().subscribe((data)=>{console.log(data);
-  this.experiencialList=data;
-  var dsds=this.experiencialList.length;  
-  return dsds;   
-     },(error)=>
-     {return 0});  
-    }
+
 
     
 
