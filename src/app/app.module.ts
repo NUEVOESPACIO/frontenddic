@@ -40,17 +40,7 @@ import { Dashboard3Component } from './dashboard3/dashboard3.component';
 import { Dashboard4Component } from './dashboard4/dashboard4.component';
 import { Dashboard5Component } from './dashboard5/dashboard5.component';
 import { TodoComponent } from './pages/todo/todo.component';
-
-
-
-
-
-
-
-
-
-
-
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 @NgModule({
@@ -73,11 +63,7 @@ import { TodoComponent } from './pages/todo/todo.component';
     Dashboard3Component,
     Dashboard4Component,
     Dashboard5Component,
-    TodoComponent,
-
-   
-
-   
+    TodoComponent, 
 
   ],
   imports: [
@@ -101,10 +87,8 @@ import { TodoComponent } from './pages/todo/todo.component';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSelectModule, 
-
-  
-   
+    MatSelectModule,   
+    NgCircleProgressModule.forRoot({}),
     
   ],
   providers: [

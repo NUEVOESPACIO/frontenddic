@@ -21,12 +21,15 @@ export class TodoComponent implements OnInit {
   public fines: any = [];
   public proyectosList: any = [];
   public finpro: any = [];
-  public experiencialList: any=[];
-  public estra: any=[];
+  public experiencialList: any = [];
+  public estra: any = [];
   public tipoempleoList: any = [];
-  public cate:any =[];
-  public skillList: any= [];
+  public cate: any = [];
+  public skillList: any = [];
   public nomskill: any = [];
+  public porcen: any = [];
+  public colorext: any = [];
+  public colorint: any = [];
 
 
   constructor(private skillservice: SkillsService, private tipoempleoservice: TipoEmpleoService, private experienciaService: ExperiencialService, private proyectosService: ProyectosService, private personasService: PersonasService, private educaacionService: EducacionService) { }
@@ -47,18 +50,18 @@ export class TodoComponent implements OnInit {
         this.experiencialList = data;
         for (let idd = 0; idd < this.experiencialList.length; idd++) {
           if (this.experiencialList[idd].esTrabajoActual === true) { this.estra[idd] = "SI" } else { this.estra[idd] = "NO" }
-  
-          var r=this.experiencialList[idd].tipoempleo;
+
+          var r = this.experiencialList[idd].tipoempleo;
           console.log("Despacito");
           console.log(r);
-          for (let idx=0; idx <this.tipoempleoList.length;idx++) {
+          for (let idx = 0; idx < this.tipoempleoList.length; idx++) {
             console.log(this.tipoempleoList[idx].id);
             console.log(r);
-  
-            if (this.tipoempleoList[idx].id == (r-1).toString()) {this.cate[idd]=this.tipoempleoList[idx].tipoEmpleo}
+
+            if (this.tipoempleoList[idx].id == (r - 1).toString()) { this.cate[idd] = this.tipoempleoList[idx].tipoEmpleo }
           }
-  
-  
+
+
         }
       }, (error) => { console.log("error") });
 
@@ -95,11 +98,31 @@ export class TodoComponent implements OnInit {
       console.log(data);
       this.skillList = data;
       for (let idd = 0; idd < this.skillList.length; idd++) {
-        if (this.skillList[idd].tipohs == '1') { this.nomskill[idd] = "HARD" } else { this.nomskill[idd] = "SOFT" }
+
+ 
+
+        try { this.porcen[idd] = (this.skillList[idd].valor / this.skillList[idd].valmax) * 100; } catch (e: any) 
+        {
+          this.porcen[idd]=0;
+
+        }
+        if (this.skillList[idd].tipohs == '1') {
+          this.nomskill[idd] = "HARD"
+          this.colorext[idd] = "#78C000";
+          this.colorint[idd] = "#C7E596";
+
+
+        } else {
+          this.nomskill[idd] = "SOFT"
+
+          this.colorext[idd] = "#17D5A6";
+          this.colorint[idd] = "#C7E596";
+
+        }
       }
     }, (error) => { console.log("error") });
 
-    
+
 
 
 
