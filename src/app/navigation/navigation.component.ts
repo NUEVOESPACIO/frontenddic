@@ -27,6 +27,8 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
 
+    
+
     console.log("MUESTRA AUTORIDADES AL INICIO");
 
     this.nuser = this.tokenService.getUserName();

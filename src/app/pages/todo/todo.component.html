@@ -1,291 +1,166 @@
-<div class="container">
-    <!-- Sobre mi -->
+<html>
 
-    <p id="sobremi"></p><br><br>
-    <div class="row">
-        <div class="col-0"><br></div>
-        <div class="col-12">
-            <div class="central">
-                <div class="encabezador">Sobre Mi</div>
-                <div *ngFor="persona of personasList;; let i = index">
-                    <div *ngIf="i==0">
-                        <div class="personaflex">
-                            <div class="personafleximagen2"><img class="personaimagen2"
-                                    src="../../../assets/{{personasList[i].urlfoto}}"></div>
-                            <div class="personaflextexto2">
-                                <div>
-                                    <p class="pert12">Nombre:<span class="pert22"> {{personasList[i].nombre}}</span></p>
-                                </div>
-                                <div>
-                                    <p class="pert12">Apellido:<span class="pert22"> {{personasList[i].apellido}}</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="pert12">Domicilio:<span class="pert22">
-                                            {{personasList[i].domicilio}}</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="pert12">Fecha de Nacimiento:<span class="pert22">
-                                            {{personasList[i].fechanac}}</span></p>
-                                </div>
-                                <div>
-                                    <p class="pert12">Telefono:<span class="pert22"> {{personasList[i].telefono}}</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="pert12">Titulo:<span class="pert22"> {{personasList[i].titulo}}</span></p>
-                                </div>
-                                <div>
-                                    <p class="pert12">Resumen:<span class="pert2">
-                                            {{personasList[i].inforesumida}}</span>
-                                    </p>
-                                </div>
+<head>
+    <style>
+        .conte {
+            border: 0px solid rgb(34, 34, 32);
+            margin: 0px;
+            padding: 0px;
+            background-color: rgb(246, 248, 241);
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
+    </style>
+</head>
 
-        <div class="col-0"><br></div>
+<body>
 
-    </div>
+    <div class="container-fluid conte">
+        <!-- Sobre mi -->
 
-    <!-- Educacion y Formacion -->
-
-
-    <div class="row">
-        <div class="col-0"><br></div>
-        <div class="col-12">
-            <p id="educacion"></p><br><br>
-            <div class="central">
-                <div class="encabezador">Educacion & Formacion</div>
-                <div *ngFor="educacion of educacionList;; let i = index">
-                    <div class="personaflex">
-                        <div class="personafleximagen"><img class="personaimagen"
-                                src="../../../assets/{{educacionList[i].ubicacion}}"></div>
-                        <div class="personaflextexto">
-                            <div>
-                                <p class="pert1">Institucion:<span class="pert2">
-                                        {{educacionList[i].institucion}}</span></p>
-                            </div>
-                            <div>
-                                <p class="pert1">Titulo Obtenido:<span class="pert2">
-                                        {{educacionList[i].titulo_obtenido}}</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="pert1">Inicio de Estudios:<span class="pert2">
-                                        {{educacionList[i].fechaini}}</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="pert1">Estudio Finalizado:<span class="pert2">
-                                        {{fines[i]}}</span></p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Fin de de Estudios:<span class="pert2">
-                                        {{educacionList[i].fechafin}}</span>
-                                </p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Comentario:<span class="pert2"> {{educacionList[i].comentario}}</span>
-                                </p>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-0"><br></div>
-
-    </div>
-
-
-
-    <!-- Proyectos -->
-
-
-    <div class="row">
-        <div class="col-0"><br></div>
-        <div class="col-12">
-            <p id="proyectos"></p><br><br>
-            <div class="central">
-                <div class="encabezador">Participaciones en Proyectos</div>
-                <div *ngFor="proyectos of proyectosList;; let i = index">
-                    <div class="personaflex">
-                        <div class="personafleximagen"><img class="personaimagen"
-                                src="../../../assets/{{proyectosList[i].imagen}}"></div>
-                        <div class="personaflextexto">
-                            <div>
-                                <p class="pert1">Nombre del Proyecto:<span class="pert2">
-                                        {{proyectosList[i].nombreProyecto}}</span></p>
-                            </div>
-                            <div>
-                                <p class="pert1">Entorno:<span class="pert2"> {{proyectosList[i].entorno}}</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="pert1">Marco & Contexto:<span class="pert2"> {{proyectosList[i].marco}}</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="pert1">Fecha de Inicio:<span class="pert2">
-                                        {{proyectosList[i].fechaini}}</span></p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Proyecto actual:<span class="pert2"> {{finpro[i]}}</span>
-                                </p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Fecha de finalización:<span class="pert2">
-                                        {{proyectosList[i].fechafin}}</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="pert1">Enlace o Referencia (si aplica):<span class="pert2"
-                                        style="cursor: pointer" (click)="opp(i);">{{proyectosList[i].link}}</span>
-                                </p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Funcion:<span class="pert2">{{proyectosList[i].funcion}}</span>
-                                </p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Resultado<span class="pert2">{{proyectosList[i].resultado}}</span>
-                                </p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Aprendisaje:<span
-                                        class="pert2">{{proyectosList[i].aprendisajeObtenido}}</span>
-                                </p>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-0"><br></div>
-
-    </div>
-
-    <!-- Experiencia -->
-
-    <div class="row">
-        <div class="col-0"><br></div>
-        <div class="col-12">
-            <p id="experiencia"></p><br><br>
-            <div class="central">
-                <div class="encabezador">Experiencia Laboral</div>
-                <div *ngFor="experiencia of experiencialList;; let i = index">
-                    <div class="personaflex">
-                        <div class="personafleximagenl"><img class="personaimagenl"
-                                src="../../../assets/{{experiencialList[i].nombreEmpresa | lowercase}}.JPG"></div>
-                        <div class="personaflextexto">
-                            <div>
-                                <p class="pert1">Nombre de la Empresa:<span class="pert2">
-                                        {{experiencialList[i].nombreEmpresa}}</span></p>
-                            </div>
-                            <div>
-                                <p class="pert1">Fecha inicio Puesto / Relacion Laboral:<span class="pert2">
-                                        {{experiencialList[i].fechaini}}</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="pert1">¿Es trabajo, puesto actual?<span class="pert2"> {{estra[i]}}</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="pert1">Fecha finalizacion puesto / Relacion Laboral<span class="pert2">
-                                        {{experiencialList[i].fechafin}}</span></p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Descripcion:<span class="pert2">
-                                        {{experiencialList[i].descripcion}}</span>
-                                </p>
-                            </div>
-
-                            <div>
-                                <p class="pert1">Tipo de Relacion Laboral:<span class="pert2">
-                                        {{cate[i]}}</span>
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-0"><br></div>
-
-
-        <!-- Skills -->
-
+        <p id="sobremi"></p><br><br>
         <div class="row">
-            <div class="col-0"><br></div>
+            <div class="col-0"><br>
+            </div>
             <div class="col-12">
-                <p id="skills"></p><br><br>
-                <div class="central">
-                    <div class="encabezador">Skills & Habilidades</div>
-                    <div *ngFor="skill of skillList; let i = index">
-                        <div class="personaflex">
-                            <div class="personafleximagenl">
-                                <circle-progress
-                                 [percent]="porcen[i]"
-                                 [radius]="100"
-                                 [outerStrokeWidth]="16"
-                                 [innerStrokeWidth]="8"
-                                 [outerStrokeColor]="colorext[i]"
-                                 [innerStrokeColor]="colorint[i]"
-                                 [animation]="true"
-                                 [animationDuration]="300">
-                                 
-                                </circle-progress>
+                <div class="centralnuevo">
+                    <p style="font-size:27px">Sobre Mi</p>
+                    <div *ngFor="persona of personasList;; let i = index">
+                        <div *ngIf="i==0">
+                            <div class="container conteinterno text-center">
+                                <div class="row row2">
+                                    <hr>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div><img class="seba" src="../../../assets/{{personasList[i].urlfoto}}">
+                                        </div>
 
-                                <br>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div>
+                                            <div>
+                                                <p class="pert12">Nombre:<span class="pert22">
+                                                        {{personasList[i].nombre}}</span>
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="pert12">Apellido:<span class="pert22">
+                                                        {{personasList[i].apellido}}</span>
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="pert12">Domicilio:<span class="pert22">
+                                                        {{personasList[i].domicilio}}</span>
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="pert12">Fecha de Nacimiento:<span class="pert22">
+                                                        {{personasList[i].fechanac}}</span></p>
+                                            </div>
+                                            <div>
+                                                <p class="pert12">Telefono:<span class="pert22">
+                                                        {{personasList[i].telefono}}</span>
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="pert12">Titulo:<span class="pert22">
+                                                        {{personasList[i].titulo}}</span>
+                                                </p>
+                                            </div>
+                                            <div>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 colresumen">
+                                            <p class="pert12"
+                                                style="border: 1px solid rgb(39, 39, 37);border-radius: 1em;padding:5px">
+                                                Resumen:<span class="pert22">
+                                                    {{personasList[i].inforesumida}}</span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                    <hr>
+                                </div>
                             </div>
-                            <div class="personaflextexto">
-                                <div>
-                                    <p class="pert1">Skill:<span class="pert2">
-                                            {{skillList[i].nombreskill}}</span></p>
-                                </div>
-                                <div>
-                                    <p class="pert1">Clasificacion:<span class="pert2"> {{nomskill[i]}}</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="pert1">Descripcion<span class="pert2"> {{skillList[i].descripcion}}</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="pert1">Valor Maximo<span class="pert2">
-                                            {{skillList[i].valmax}}</span></p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-0"><br></div>
+
+            </div>
+        </div>
+
+        <!-- Educacion y Formacion -->
+
+        <p id="educacion"></p><br><br>
+        <div class="row">
+            <div class="col-0"><br>
+            </div>
+            <div class="col-12">
+                <div class="centralnuevoedu">
+                    <p style="font-size:27px">Educacion & Formacion</p>
+                    <div *ngFor="educacion of educacionList; let i = index; let impar=odd">
+                        <div class="container conteinternoedu text-center">
+                            <div class="row row2edu">
+                                <hr>
+                                <div *ngIf="impar" class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div><img class="sebaedu" src="../../../assets/{{educacionList[i].ubicacion}}">
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <p class="pert1">Valor Vigente:<span class="pert2"> {{skillList[i].valor}}</span>
-                                    </p>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div>
+                                        <div>
+                                            <p class="pert12edu">Institucion:<span class="pert22edu">
+                                                    {{educacionList[i].institucion}}</span>
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p class="pert12edu">Titulo Obtenido:<span class="pert22edu">
+                                                    {{educacionList[i].titulo_obtenido}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12edu">Inicio de Estudios:<span class="pert22edu">
+                                                    {{educacionList[i].fechaini}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12edu">Estudio Finalizado:<span class="pert22edu">
+                                                    {{fines[i]}}</span>
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p class="pert12edu">Fin de de Estudios:<span class="pert22edu">
+                                                    {{educacionList[i].fechafin}}</span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div *ngIf="!impar" class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div><img class="sebaedu" src="../../../assets/{{educacionList[i].ubicacion}}">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 colresumenedu">
+                                        <p class="pert12edu"
+                                            style="border: 1px solid rgb(39,39,37);border-radius:1em;padding:5px;">
+                                            Comentario:<span class="pert22edu">
+                                                {{educacionList[i].comentario}}</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+
 
 
                             </div>
@@ -294,118 +169,286 @@
                     </div>
                 </div>
             </div>
+            <div class="col-0"><br>
+            </div>
+        </div>
 
-            <div class="col-0"><br></div>
+
+        <!-- Proyectos -->
+
+        <p id="proyectos"></p><br><br>
+        <div class="row">
+            <div class="col-0"><br>
+            </div>
+            <div class="col-12">
+                <div class="centralnuevopro">
+                    <p style="font-size:27px">Proyectos & Participaciones</p>
+                    <div *ngFor="proyectos of proyectosList; let i = index; let impar=odd">
+                        <div class="container conteinternoedu text-center">
+                            <div class="row row2pro">
+                                <hr>
+                                <div *ngIf="!impar" class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div><img class="sebapro" src="../../../assets/{{proyectosList[i].imagen}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div>
+                                        <div>
+                                            <p class="pert12pro">Nombre del Proyecto:<span class="pert22pro">
+                                                    {{proyectosList[i].nombreProyecto}}</span>
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p class="pert12pro">Entorno:<span class="pert22pro">
+                                                    {{proyectosList[i].entorno}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12pro">Marco & Contexto:<span class="pert22pro">
+                                                    {{proyectosList[i].marco}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12pro">Fecha de Inicio:<span class="pert22pro">
+                                                    {{proyectosList[i].fechaini}}</span>
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p class="pert12pro">Proyecto Actual:<span class="pert22pro">
+                                                    {{finpro[i]}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12pro">Fecha de Finalizacion:<span class="pert22pro">
+                                                    {{proyectosList[i].fechafin}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12pro">Enlace o Referencia (si aplica):<span class="pert22pro"
+                                                    style="cursor: pointer" (click)="opp(i);">
+                                                    {{proyectosList[i].link}}</span>
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p class="pert12pro">Funcion:<span class="pert22pro">
+                                                    {{proyectosList[i].funcion}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12pro">Resultado:<span class="pert22pro">
+                                                    {{proyectosList[i].resultado}}</span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div *ngIf="impar" class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div><img class="sebapro" src="../../../assets/{{proyectosList[i].imagen}}">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 colresumenpro">
+                                    <p class="pert12pro"
+                                        style="border: 1px solid rgb(39,39,37);border-radius:1em;padding:5px;">
+                                        Aprendizaje Obtenido:<span class="pert22pro">
+                                            {{proyectosList[i].aprendisajeObtenido}}</span>
+                                    </p>
+                                </div>
+                            </div>
 
 
 
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-0"><br>
+        </div>
+
+
+
+        <!-- Exprienncia Laboral -->
+
+        <p id="experiencia"></p><br><br>
+        <div class="row">
+            <div class="col-0"><br>
+            </div>
+            <div class="col-12">
+                <div class="centralnuevoexp">
+                    <p style="font-size:27px">Experiencia Laboral</p>
+                    <div *ngFor="experiencia of experiencialList; let i = index; let impar=odd">
+                        <div class="container conteinternoexp text-center">
+                            <div class="row row2pro">
+                                <hr>
+                                <div *ngIf="impar" class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div><img class="sebaexp"
+                                            src="../../../assets/{{experiencialList[i].nombreEmpresa | lowercase}}.JPG">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div>
+                                        <div>
+                                            <p class="pert12exp">Nombre de la Empresa:<span class="pert22exp">
+                                                    {{experiencialList[i].nombreEmpresa}}</span>
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p class="pert12exp">Fecha Inicio de Puesto y/o Relacion Laboral:<span
+                                                    class="pert22exp">
+                                                    {{experiencialList[i].fechaini}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12exp">¿Es trabajo/puesto actual?:<span class="pert22exp">
+                                                    {{estra[i]}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12exp">Fecha de Finalizacion Puesto/Relacion Laboral:<span
+                                                    class="pert22exp">
+                                                    {{experiencialList[i].fechafin}}</span>
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p class="pert12exp">Tipo de Relacion Laboral:<span class="pert22exp">
+                                                    {{cate[i]}}</span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div *ngIf="!impar" class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div><img class="sebaexp"
+                                            src="../../../assets/{{experiencialList[i].nombreEmpresa | lowercase}}.JPG">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 colresumenexp">
+                                    <p class="pert12exp"
+                                        style="border: 1px solid rgb(39,39,37);border-radius:1em;padding:5px;">
+                                        Descripción:<span class="pert22exp">
+                                            {{experiencialList[i].descripcion}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-0"><br>
         </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <!-- SKILLS -->
+
+        <p id="skills"></p><br><br>
+        <div class="row">
+            <div class="col-0"><br>
+            </div>
+            <div class="col-12">
+                <div class="centralnuevoski">
+                    <p style="font-size:27px">Skills & Habilidades</p>
+                    <div *ngFor="skill of skillList; let i = index; let impar=odd">
+                        <div class="container conteinternoski text-center">
+                            <div class="row row2ski">
+                                <hr>
+                                <div *ngIf="!impar" class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div>
+                                        <circle-progress [percent]="porcen[i]" [radius]="100" [outerStrokeWidth]="16"
+                                            [innerStrokeWidth]="8" [outerStrokeColor]="colorext[i]"
+                                            [innerStrokeColor]="colorint[i]" [animation]="true"
+                                            [animationDuration]="300">
+                                        </circle-progress>
+                                        <br>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div>
+                                        <div>
+                                            <p class="pert12ski">Skill y/o Habilidad:<span class="pert22ski">
+                                                    {{skillList[i].nombreskill}}</span>
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p class="pert12ski">Clasificacion:<span class="pert22ski">
+                                                    {{nomskill[i]}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12ski">Valor Maximo:<span class="pert22ski">
+                                                    {{skillList[i].valmax}}</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="pert12ski">Valor Actual:<span class="pert22ski">
+                                                    {{skillList[i].valor}}</span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div *ngIf="impar" class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                    <div>
+                                        <circle-progress [percent]="porcen[i]" [radius]="100" [outerStrokeWidth]="16"
+                                            [innerStrokeWidth]="8" [outerStrokeColor]="colorext[i]"
+                                            [innerStrokeColor]="colorint[i]" [animation]="true"
+                                            [animationDuration]="300">
+                                        </circle-progress>
+                                        <br>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 colresumenski">
+                                    <p class="pert12ski"
+                                        style="border: 1px solid rgb(39,39,37);border-radius:1em;padding:9px;">
+                                        Descripción:<span class="pert22ski">
+                                            {{skillList[i].descripcion}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-0"><br>
+        </div>
     </div>
+
+
+</body>
+
+</html>
