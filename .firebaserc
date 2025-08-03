@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "frontendnov"
-  }
+    "default": "frontendnov",
+    "staging": "frontend2025-2a78",
+    "portada": "frontendnov"
+  },
+  "targets": {},
+  "etags": {}
 }

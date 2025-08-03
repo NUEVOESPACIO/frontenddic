@@ -1,110 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <style>
-        .row {
-            background-color: rgb(246,248,241);
-            border: 3px solid rgb(110, 73, 5);
-            padding: 5px;
-            margin: 10px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Sebastián</title>
+  <style>
+    body {
+      background-color: rgb(246, 248, 241);
+    }
 
-        .col {
-            background-color: chocolate;
-            color: white;
-            font-size: 50px;
-            border: 2px solid #640328;
-            padding: 10px;
-            margin: 20px;
+    .contai {
+      border: 3px solid rgb(214, 129, 17);
+      border-radius: 2em;
+      margin-top: 60px;
+      padding: 30px;
+    }
 
-        }
+    .rowupper,
+    .rowmiddle {
+      border-radius: 2em;
+      align-items: center;
+      margin-bottom: 30px;
+    }
 
-        img {
-            width: 50%;
-            margin: auto;
-            display: block;
-        }
+    .columna img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 1em;
+    }
 
-        .columna {
-            color: rgb(44, 41, 41);
-            font-size: 45px;
-            border: 0px solid white;
+    .columna {
+      font-size: 2rem;
+      color: rgb(44, 41, 41);
+    }
 
-        }
+    .columnam {
+      font-size: 1.3rem;
+      color: rgb(44, 41, 41);
+      text-align: left;
+    }
 
-        .columnam {
-            color: rgb(44, 41, 41);
-            font-size: 30px;
-            border: 0px solid white;
+    .hr-line {
+      border: none;
+      border-top: 1px solid #aaa;
+      margin: 25px 0;
+    }
 
-        }
+    .login-credentials {
+      font-size: 1.4rem;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
 
-        .rowupper {
-            border: 0px solid rgb(214, 129, 17);
-            border-radius: 2em;
-            align-items: center;
-        }
-
-        .rowmiddle {
-            border: 0px solid rgb(214, 129, 17);
-            border-radius: 2em;
-            align-items: center;
-        }
-
-        .contai {
-            border: 3px solid rgb(214, 129, 17);
-            border-radius: 2em;
-            margin-top: 60px;
-        }
-    </style>
+    .quote {
+      font-size: 1.2rem;
+      font-style: italic;
+      text-align: center;
+      margin-top: 30px;
+      color: #555;
+    }
+  </style>
 </head>
 
-<body style="background-color: rgb(246,248,241);">
+<body>
 
-
-    <div class="container-md text-center contai">
-        <div class="row rowupper">
-            <div class="col-sm-12 col-lg-5 columna" style="background-color:rgb(246,248,241);">
-                <img class="seba" src="../../../assets/fotoseba.JPG">
-            </div>
-            <div class="col-sm-12 col-lg-7 columna" style="background-color:rgb(246,248,241);">
-                <p style="text-align:center;vertical-align: middle;"><b>Bienvenid@ a mi Portfolio</b><br>Gracias por
-                    visitarme</p>
-            </div>
-        </div>
-
-
-        <div class="row rowmiddle">
-            <div class="col-sm-12 col-lg-1">&nbsp;
-
-            </div>
-            <div class="col-sm-12 col-lg-10 columnam">
-                <hr>
-                <p>
-                    ¡Hola! Me llamo Sebastián. Me encuentro en la etapa final de la entrega del proyecto integrador
-                    del
-                    programa
-                    "Argentina Programa". Agradezo al mismo la oportunidad de formarme en un área que a lo largo de
-                    mi vida siempre me interesó.
-                    Para mi la programación es un proceso enormemente creativo. Te invito a que visites mi portfolio
-                    para conocer mas de mi y mis intereses.
-                    Solo debes hacer click en Login (arriba a la izquierda) e ingresar como <b>Invitado</b> con las
-                    siguientes
-                    credenciales:
-                </p>
-                <p style="font-size: 34px;padding-top:30px;"><b>Usuario</b>: user </p>
-           
-            <p style="font-size: 34px;"><b>Contraseña</b>: user </p><hr>
-            <div class="pie" style="font-size: 25px;">
-                "La función de un buen Software es hacer que lo complejo, aparente ser simple"<br> - Grady Booch
-                -
-            </div>
-            </div>
-            <div class="col-sm-12 col-lg-1">&nbsp;
-
-            </div>
-        </div>
-
-
+  <div class="container-md text-center contai">
+    <div class="row rowupper">
+      <div class="col-sm-12 col-lg-5 columna">
+        <img src="../../../assets/fotoseba.JPG" alt="Foto de Sebastián">
+      </div>
+      <div class="col-sm-12 col-lg-7 columna">
+        <p><b>Bienvenid@ a mi Portfolio</b><br>Gracias por visitarme</p>
+      </div>
     </div>
 
+    <div class="row rowmiddle">
+      <div class="col-sm-12 col-lg-1"></div>
+
+      <div class="col-sm-12 col-lg-10 columnam">
+        <hr class="hr-line" />
+
+        <p>
+          ¡Hola! Mi nombre es Sebastián y te presento el proyecto con el que finalicé y aprobé el programa Argentina Programa en el año 2022. 
+          Se trata de un portfolio web desarrollado como trabajo final, con el objetivo de aplicar de manera práctica los contenidos aprendidos durante el curso.
+        </p>
+
+        <hr class="hr-line" />
+
+        <p>
+          Este portfolio es una muestra ficticia e incompleta, es decir, los datos no se completaron en su totalidad y son demostrativos y académicos.
+        </p>
+
+        <hr class="hr-line" />
+
+        <h3>Tecnologías usadas</h3>
+        <p>
+          - <b>FrontEnd:</b> Angular con JavaScript<br>
+          - <b>BackEnd:</b> Java con Spring Boot (NetBeans)<br>
+          - <b>Base de datos:</b> MySQL (Clever Cloud)<br>
+          - <b>Hosting FrontEnd:</b> Firebase<br>
+          - <b>Servidor BackEnd:</b> KOYEB<br>
+          - <b>Repositorios:</b> GitHub (deploy automático en BackEnd, manual en FrontEnd)
+        </p>
+
+        <hr class="hr-line" />
+
+        <h3>Contenidos aplicados</h3>
+        <p>
+          - Programación Orientada a Objetos<br>
+          - Arquitectura por capas<br>
+          - Autenticación y Autorización JWT<br>
+          - Uso de JPA y manejo de Entities<br>
+          - Integración entre FrontEnd y BackEnd<br>
+          - Consumo de servicios REST<br>
+          - Utilización de repositorios remotos (GitHub)
+        </p>
+
+        <hr class="hr-line" />
+
+        <h3>Estado actual</h3>
+        <p><b>Agosto 2025:</b></p>
+        <p>
+          Actualmente (agosto de 2025) me encuentro en búsqueda activa de oportunidades laborales. 
+          Cuento con amplia disponibilidad por las mañanas, de manera remota, y ya cuento con más de 2 años de experiencia en JavaScript como habilidad clave. 
+          Como explico en mi CV, utilizo JavaScript en mi trabajo actual.
+        </p>
+        <p>
+          Además, estoy fortaleciendo mis habilidades en inglés conversacional y profundizando mis conocimientos en Angular y Java.
+        </p>
+        <p>
+          Ante cualquier oportunidad laboral o entrevista, estoy atento a mensajes en mi correo profesional: 
+          <a href="mailto:sebacap313@gmail.com">sebacap313@gmail.com</a>
+        </p>
+
+        <hr class="hr-line" />
+
+        <p>
+          Te comparto credenciales para interactuar con este proyecto.<br>
+          Solo debes hacer clic en <b>Login</b> (arriba a la izquierda) e ingresar como <b>Invitado</b>:
+        </p>
+
+        <div class="login-credentials">
+          <p><b>Usuario:</b> user</p>
+          <p><b>Contraseña:</b> user</p>
+        </div>
+
+        <hr class="hr-line" />
+
+        <div class="quote">
+          “La función de un buen software es hacer que lo complejo aparente ser simple”<br>– Grady Booch
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-1"></div>
+    </div>
+  </div>
 
 </body>
+</html>
