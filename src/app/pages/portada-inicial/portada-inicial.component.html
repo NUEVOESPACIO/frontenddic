@@ -4,16 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio Sebastián</title>
+
   <style>
+
     body {
       background-color: rgb(246, 248, 241);
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: rgb(44, 41, 41);
     }
 
     .contai {
       border: 3px solid rgb(214, 129, 17);
       border-radius: 2em;
       margin-top: 60px;
+      margin-bottom: 60px;
       padding: 30px;
+      background-color: rgb(246, 248, 241);
     }
 
     .rowupper,
@@ -27,29 +35,37 @@
       width: 100%;
       max-width: 250px;
       border-radius: 1em;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
     }
 
     .columna {
       font-size: 2rem;
       color: rgb(44, 41, 41);
+      text-align: center;
     }
 
     .columnam {
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       color: rgb(44, 41, 41);
       text-align: left;
+      line-height: 1.8;
     }
 
     .hr-line {
       border: none;
       border-top: 1px solid #aaa;
-      margin: 25px 0;
+      margin: 30px 0;
     }
 
     .login-credentials {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       margin-top: 20px;
       margin-bottom: 30px;
+      border: 2px solid rgb(214, 129, 17);
+      border-radius: 1em;
+      padding: 20px;
+      background-color: rgba(214, 129, 17, 0.08);
+      text-align: center;
     }
 
     .quote {
@@ -58,30 +74,106 @@
       text-align: center;
       margin-top: 30px;
       color: #555;
+      line-height: 1.8;
     }
+
+    h3 {
+      color: rgb(214, 129, 17);
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+
+    h4 {
+      color: rgb(214, 129, 17);
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: rgb(214, 129, 17);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .highlight-box {
+      background-color: rgba(214, 129, 17, 0.08);
+      border-left: 5px solid rgb(214, 129, 17);
+      padding: 20px;
+      border-radius: 1em;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .estado {
+      color: rgb(214, 129, 17);
+      font-weight: bold;
+    }
+
+    @media(max-width:768px){
+
+      .columna {
+        font-size: 1.5rem;
+      }
+
+      .columnam {
+        font-size: 1rem;
+      }
+
+      .contai {
+        padding: 20px;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
 
   <div class="container-md text-center contai">
+
+    <!-- CABECERA -->
+
     <div class="row rowupper">
+
       <div class="col-sm-12 col-lg-5 columna">
         <img src="../../../assets/fotoseba.JPG" alt="Foto de Sebastián">
       </div>
+
       <div class="col-sm-12 col-lg-7 columna">
-        <p><b>Bienvenid@ a mi Portfolio</b><br>Gracias por visitarme</p>
+        <p>
+          <b>Bienvenid@ a mi Portfolio</b>
+          <br>
+          Gracias por visitarme
+        </p>
       </div>
+
     </div>
 
+    <!-- CONTENIDO -->
+
     <div class="row rowmiddle">
+
       <div class="col-sm-12 col-lg-1"></div>
 
       <div class="col-sm-12 col-lg-10 columnam">
+
         <hr class="hr-line" />
 
         <p>
-          ¡Hola! Mi nombre es Sebastián y te presento el proyecto con el que finalicé y aprobé el programa Argentina Programa en el año 2022. 
+          ¡Hola! Mi nombre es Sebastián y te presento el proyecto con el que finalicé y aprobé el programa Argentina Programa en el año 2022.
           Se trata de un portfolio web desarrollado como trabajo final, con el objetivo de aplicar de manera práctica los contenidos aprendidos durante el curso.
         </p>
 
@@ -94,9 +186,22 @@
         <hr class="hr-line" />
 
         <h3>Tecnologías usadas</h3>
+
         <p>
-          - <b>FrontEnd:</b> Angular con JavaScript<br>
-          - <b>BackEnd:</b> Java con Spring Boot (NetBeans)<br>
+          - <b>FrontEnd:</b> Angular con JavaScript. 
+          Repositorio: 
+          <a href="https://github.com/NUEVOESPACIO/frontenddic/tree/master2" target="_blank" rel="noopener noreferrer">
+            frontenddic (frontend)
+          </a>
+          <br>
+        
+          - <b>BackEnd:</b> Java con Spring Boot (NetBeans). 
+          Repositorio: 
+          <a href="https://github.com/NUEVOESPACIO/BackEndEnero/tree/master2" target="_blank" rel="noopener noreferrer">
+            BackEndEnero (backend)
+          </a>
+          <br>
+        
           - <b>Base de datos:</b> MySQL (Clever Cloud)<br>
           - <b>Hosting FrontEnd:</b> Firebase<br>
           - <b>Servidor BackEnd:</b> KOYEB<br>
@@ -106,6 +211,7 @@
         <hr class="hr-line" />
 
         <h3>Contenidos aplicados</h3>
+
         <p>
           - Programación Orientada a Objetos<br>
           - Arquitectura por capas<br>
@@ -118,26 +224,16 @@
 
         <hr class="hr-line" />
 
-        <h3>Estado actual</h3>
-        <p><b>Agosto 2025:</b></p>
-        <p>
-          Actualmente (Octubre de 2025) me encuentro en búsqueda activa de oportunidades laborales. 
-          Cuento con amplia disponibilidad por las mañanas, de manera remota, y ya cuento con más de 2 años de experiencia en JavaScript como habilidad clave. 
-          Como explico en mi CV, utilizo JavaScript en mi trabajo actual.
-        </p>
-        <p>
-          Además, estoy fortaleciendo mis habilidades en inglés conversacional y profundizando mis conocimientos en Angular y Java.
-        </p>
-        <p>
-          Ante cualquier oportunidad laboral o entrevista, estoy atento a mensajes en mi correo profesional: 
-          <a href="mailto:sebacap313@gmail.com">sebacap313@gmail.com</a>
-        </p>
+        <!-- LOGIN -->
 
-        <hr class="hr-line" />
+        <h3>Acceso de prueba al proyecto</h3>
 
         <p>
-          Te comparto credenciales para interactuar con este proyecto.<br>
-          Solo debes hacer clic en <b>Login</b> (arriba a la izquierda) e ingresar como <b>Invitado</b>:
+          Te comparto credenciales de acceso para que puedas interactuar con este portfolio web desarrollado como proyecto final de Argentina Programa.
+        </p>
+
+        <p>
+          Solo debes hacer clic en <b>Login</b> (arriba a la izquierda) e ingresar con el siguiente usuario de prueba:
         </p>
 
         <div class="login-credentials">
@@ -145,15 +241,215 @@
           <p><b>Contraseña:</b> user</p>
         </div>
 
+        <p>
+          La cuenta es únicamente demostrativa y permite visualizar el funcionamiento general del sistema.
+        </p>
+
+        <p>
+          Además, más abajo podrás encontrar otros proyectos personales y profesionales en los que continúo trabajando actualmente, junto con las tecnologías y conceptos que sigo desarrollando.
+        </p>
+
         <hr class="hr-line" />
 
-        <div class="quote">
-          “La función de un buen software es hacer que lo complejo aparente ser simple”<br>– Grady Booch
+        <!-- NUEVA SECCION -->
+
+        <h3>Proyectos actuales y evolución profesional (2022 - Mayo 2026)</h3>
+
+        <div class="highlight-box">
+
+          <p>
+            Este portfolio corresponde al proyecto realizado en 2022.
+            Desde entonces y hasta la actualidad (Mayo de 2026), continúo desarrollando distintos proyectos en paralelo con el objetivo de mejorar mis prácticas de programación, arquitectura de software e integración de tecnologías.
+          </p>
+
         </div>
+
+        <!-- PROYECTO 1 -->
+
+        <h4>Proyecto profesional — Empresa Aerocomercial</h4>
+
+        <p>
+          Desarrollo de un sistema orientado al seguimiento y reporte de avances de inspección técnica en aeronaves.
+        </p>
+
+        <p><b>Tecnologías y conceptos utilizados:</b></p>
+
+        <ul>
+          <li>JavaScript Vanilla</li>
+          <li>Libreria Jasmine y diseño TailWind</li>
+          <li>Macros Excel con Visual Basic</li>
+          <li>Manipulación avanzada del DOM</li>
+          <li>Cálculos probabilísticos</li>
+          <li>Tokenización y categorización de texto mediante lógica propia</li>
+          <li>Análisis de frecuencia y ponderación de novedades de mantenimiento</li>
+        </ul>
+
+        <hr class="hr-line" />
+
+        <!-- PROYECTO 2 -->
+
+        <h4>Proyecto personal — Simulador gravitacional de cuerpos celestes</h4>
+
+        <p class="estado">
+          Estado actual: aproximadamente 50% completado
+        </p>
+
+        <p>
+          Actualmente me encuentro desarrollando un simulador físico orientado al comportamiento gravitacional de múltiples cuerpos celestes bajo las leyes de Newton.
+          El proyecto está inspirado en el conocido problema de los <b>N-Cuerpos (N-Body Problem)</b>.
+        </p>
+
+        
+        <p><b>Arquitectura y tecnologías:</b></p>
+
+        <ul>
+          <li>BackEnd con Java + Spring Boot</li>
+          <li>Persistencia con JPA y MySQL</li>
+          <li>JWT Token con manejo de Usuarios y Roles</li>
+          <li>FrontEnd con React + TypeScript</li>
+          <li>Diseño Tailwind</li>
+          <li>Motor de simulación desarrollado en JavaScript</li>
+          <li>Renderizado gráfico utilizando Canvas</li>
+          <li>Testing en desarrollo</li>
+          <li>Estado del Proyecto: Be en GitHub, en proceso (Mayo 2026) de desarrollo FrontEnd</li>
+
+        </ul>
+
+        <p><b>Deploy planificado:</b></p>
+
+        <ul>
+          <li>BackEnd → Render</li>
+          <li>FrontEnd → Vercel</li>
+          <li>Base de Datos → Supabase</li>
+        </ul>
+
+        <p>
+          Repositorio actual del BackEnd:
+          <br>
+
+          <a
+          href="https://github.com/NUEVOESPACIO/AvancesBackEnd"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://github.com/NUEVOESPACIO/AvancesBackEnd
+        </a>
+
+        </p>
+
+        <hr class="hr-line" />
+
+        <!-- PROYECTO 3 -->
+
+        <h4>Proyecto personal — Análisis de carteras de inversión</h4>
+
+        <p class="estado">
+          Estado actual: aproximadamente 30% completado
+        </p>
+
+        <p>
+          Proyecto orientado al análisis estadístico de carteras de inversión de acciones y ETFs, enfocado principalmente en el estudio de correlaciones y balance de riesgo.
+        </p>
+
+        <p><b>Objetivos principales:</b></p>
+
+        <ul>
+          <li>Obtención de matrices de correlación de Pearson</li>
+          <li>Análisis de retornos históricos</li>
+          <li>Balance y diversificación de cartera</li>
+          <li>Detección de instrumentos con mejor ventana de oportunidad</li>
+        </ul>
+
+        <p><b>Tecnologías utilizadas:</b></p>
+
+        <ul>
+          <li>Yahoo Finance API</li>
+          <li>TypeScript</li>
+          <li>React</li>
+          <li>Node.js</li>
+          <li>Lectura de archivos Excel mediante librerías especializadas</li>
+        </ul>
+
+        <p>
+          Actualmente el proyecto continúa en entorno local mientras sigo desarrollando funcionalidades y arquitectura.
+        </p>
+
+        <hr class="hr-line" />
+
+        <!-- IA -->
+
+        <h3>Uso de Inteligencia Artificial</h3>
+
+        <p>
+          Utilizo herramientas de IA principalmente para:
+        </p>
+
+        <ul>
+          <li>Generación de código boilerplate</li>
+          <li>Consulta de mejores prácticas</li>
+          <li>Optimización de arquitectura y estructura</li>
+          <li>Resolución de dudas técnicas</li>
+          <li>Aprendizaje continuo</li>
+        </ul>
+
+        <p>
+          Herramientas utilizadas:
+          ChatGPT, GitHub Copilot, cursos online y documentación técnica.
+        </p>
+
+        <hr class="hr-line" />
+
+        <!-- OBJETIVOS -->
+
+        <h3>Temas y objetivos actuales</h3>
+
+        <ul>
+          <li>Mejorar procesos de deploy y producción</li>
+          <li>Desarrollo avanzado de componentes React</li>
+          <li>Incrementar cobertura de testing en React</li>
+          <li>Dockerización y virtualización de servicios</li>
+        
+        </ul>
+
+        <hr class="hr-line" />
+
+        <!-- ESTADO ACTUAL -->
+
+        <h3>Estado actual</h3>
+
+        <p>
+          Actualmente me encuentro en búsqueda activa de oportunidades laborales.  
+          Cuento con disponibilidad horaria principalmente por la mañana (Ezeiza, Argentina) y valoro especialmente la flexibilidad horaria o posiciones part-time en ese turno.  
+          También tengo capacidad de adaptación a distintos husos horarios, incluyendo el europeo.  
+          Continúo fortaleciendo mis conocimientos en React/TypeScript, Java/Spring Boot e inglés conversacional.
+        </p>
+
+        <p>
+          Además, cuento con experiencia práctica utilizando JavaScript en entornos reales de trabajo.
+        </p>
+
+        <p>
+          Ante cualquier oportunidad laboral o entrevista, estoy atento a mensajes en mi correo profesional:
+          <br>
+
+          <a href="mailto:sebacap313@gmail.com">
+            sebacap313@gmail.com
+          </a>
+
+        </p>
+
+        <hr class="hr-line" />
+
+        <!-- FRASE -->
+
+        
+
       </div>
 
       <div class="col-sm-12 col-lg-1"></div>
+
     </div>
+
   </div>
 
 </body>
